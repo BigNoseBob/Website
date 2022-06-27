@@ -19,7 +19,7 @@ async function main() {
             "Content-type": "text/html"
         });
         
-        let html = fs.readFileSync(__dirname + "/portfolio.html", "utf8");
+        let html = fs.readFileSync(__dirname + "/resume.html", "utf8");
         const user = "Node JS";
         
         html = html.replace("{ user }", user);
