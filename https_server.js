@@ -32,7 +32,7 @@ async function main() {
             res.writeHead(200, {
                 "Content-type": "image/jpeg"
             })
-            let jpeg = fs.readFile(__dirname + req.url, (err, data) => {
+            fs.readFile(__dirname + req.url, (err, data) => {
                 res.end(data)
             })
 
@@ -40,7 +40,9 @@ async function main() {
             res.writeHead(200, {
                 "Content-type": "text/html"
             })
-            res.end('TEMP')
+            fs.readFile(__dirname + '/index.html', (err, data) => {
+                res.end(data)
+            })
         }
         
 
