@@ -1,15 +1,19 @@
 // Oliver Rayner
 // June 2022
 
-const http = require('node:http')
+const https = require('node:https')
 const fs = require('node:fs')
 
 async function main() {
 	
     // HTTP Server
-    const port = 8888
+    const port = 443
+    const options = {
+        key: fs.readFileSync('./key.pem'),
+        cert: fs.readFileSync('./cert.pem'),
+    }
 
-    let server = http.createServer(async (req, res) => {
+    let server = https.createServer(options, async (req, res) => {
 
         res.writeHead(200, {
             "Content-type": "text/html"
@@ -24,8 +28,8 @@ async function main() {
     })
 
     server.listen(port)
-    console.log(`Listening on http://ec2-3-22-234-91.us-east-2.compute.amazonaws.com:${port}`)
-    // console.log(`Listening on http://localhost:${port}`)
+    // console.log(`Listening on http://ec2-3-22-234-91.us-east-2.compute.amazonaws.com:${port}`)
+    console.log(`Listening on https://oliverr.dev:${port}`)
 
 }
 
