@@ -39,6 +39,7 @@ async function main() {
                     city: data.city, 
                     state_prov: data.state_prov, 
                     country_name: data.country_name,
+                    coordinates: [data.latitude, data.longitude],
                     user_agent: req.headers['user-agent'],
                 })
             }).catch(err => console.error(err))
