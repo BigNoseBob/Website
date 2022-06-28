@@ -24,7 +24,7 @@ async function main() {
             "Content-Type": url.endsWith('.jpeg')? "image/jpeg" : "text/html"
         })
         fs.readFile(__dirname + url, (err, data) => {
-            res.data(data)
+            res.end(data)
         })
   
     })
