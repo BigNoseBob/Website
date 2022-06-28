@@ -1,10 +1,6 @@
 // Oliver Rayner
 // June 2022
 
-function clamp(val, min, max) {
-  return Math.min(Math.max(val, min), max)
-}
-
 function fadeOutOnScroll(element) {
 
   if (!element) return
@@ -18,6 +14,8 @@ function fadeOutOnScroll(element) {
   if (scrollTop > distanceToTop) {
     opacity = 1 - (scrollTop - (distanceToTop - 75)) / (elementHeight + 75);
   }
+
+  console.log(opacity)
   
   if (opacity >= 0) {
     element.style.opacity = opacity;
@@ -47,12 +45,11 @@ function fadeInOnScroll(element) {
 
 }
 
-window.onload = () => {
-  let title = document.getElementById('title')
+let title = document.getElementById('title')
+console.log('Hello')
 
-  function scrollHandler() {
-    fadeOutOnScroll(title)
-  }
-
-  window.addEventListener('scroll', scrollHandler)
+function scrollHandler() {
+  fadeOutOnScroll(title)
 }
+
+window.addEventListener('scroll', scrollHandler)
