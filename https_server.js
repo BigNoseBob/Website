@@ -9,8 +9,8 @@ async function main() {
     // HTTP Server
     const port = 443
     const options = {
-        key: fs.readFileSync('./key.pem'),
-        cert: fs.readFileSync('./cert.pem'),
+        key: fs.readFileSync('./privkey.pem'),
+        cert: fs.readFileSync('./fullchain.pem'),
     }
 
     let server = https.createServer(options, async (req, res) => {
