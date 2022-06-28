@@ -21,7 +21,7 @@ async function main() {
         if (url === '/') 
             url = '/index.html'
         res.writeHead(200, {
-            "Content-Type": url.endsWith('.jpeg')? "image/jpeg" : "text/html"
+            "Content-Type": (url.endsWith('.jpeg') || url.endsWith('.ico'))? "image/jpeg" : "text/html"
         })
         fs.readFile(__dirname + url, (err, data) => {
             res.end(data)
