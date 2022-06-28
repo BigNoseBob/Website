@@ -28,6 +28,8 @@ async function main() {
 
     let server = https.createServer(options, async (req, res) => {
 
+        console.log(req.headers)
+
         let url = req.url
         if (url === '/') {
             url = '/index.html'
@@ -39,7 +41,7 @@ async function main() {
                     city: data.city, 
                     state_prov: data.state_prov, 
                     country_name: data.country_name,
-                    user_agent: req.getHeader("User-Agent"),
+                    // user_agent: req.getHeader("User-Agent"),
                 })
             }).catch(err => console.error(err))
 
