@@ -9,35 +9,66 @@
         text-align: center; position: -webkit-sticky; position: sticky; top: 0; border-bottom: gray solid 2px; background-color: white; 
         padding-top: 5px; padding-bottom: 5px;
         }
+    .navlink { text-decoration: none; color: inherit; }
+    a.navlink:hover {
+        font-weight: bold;
+    }
+    .input {
+        border: none;
+        border-color: transparent;
+        resize: none;
+        outline: none;
+        font-family: monospace;
+        /* caret-color: transparent; */
+    }
+    .blink {
+        animation: blinker 2s linear infinite;
+    }
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
 </style>
+
+<script src="js/scripts.js"></script>
+<script src="js/cli.js"></script>
+<script type="module" src="js/commands/ping.js"></script>
 
 <html>
 
 <header>
     <meta charset="UTF-8">
     <title>Oliver Rayner</title>  <!--This is the thingy that appears in the hotbar-->
-    <link rel="stylesheet" type="text/css" href="./style.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </header>
 
-<!-- <div class="navbar">
-    <h5>
-        <a href="index.html">Home</a> &emsp; Portfolio &emsp; <a href="resume.html">Resume</a>
-    </h5>
-</div> -->
-
 <body>
 
-    <div class="main" style="text-align: left; font-family: monospace; padding-top: 20px;">
+    <div class="main" id="title" style="text-align: left; font-family: monospace; padding-top: 20px;">
 
         <h1>Hello,<br>my name is Oliver.</h1>
-        <h4>This is my website.</h4>
+        <h4 style="margin-bottom: 0px;">This is my website.</h4>
+        <p style="text-align: right; padding-top: 50px; margin-top: 20px;">
+            Come take a look at my <a class="navlink" href="https://www.google.com">projects</a>
+            <br><a class="navlink" href="">experience</a>
+            <br><a class="navlink" href="">hobbies</a>
+        </p>
 
     </div>
 
-    <div class="main" style="text-align: left; font-family: monospace;">
+    <div class="main" id="cli" style="text-align: left; font-family: monospace; opacity: 1; padding-top: 120px;">
         
-        
+        <a class="blink" id="cli_prefix"><b>>></b></a> <input class="input" id="cli_input" size="50">
+
+    </div>
+
+    <div class="main" style="text-align: left; font-family: monospace; padding-top: 600px;">
+
+        <p>
+
+        </p>
 
     </div>
     
