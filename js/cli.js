@@ -10,9 +10,14 @@ const COMMANDS = [
         description: 'replies pong',
         execute: function({ document, args }) {
 
+            console.log('pong!')
             alert('pong!')
 
         }
+    },
+
+    {
+        name: 'spotify_top'
     }
 
 ]
@@ -44,9 +49,8 @@ function main() {
         let text = cli_input.value || null
         cli_input.value = null
         let [name, args] = parser(text)
-        console.log(name, args)
-        
-        if (!(name in document.commands)) return
+
+        if (!(document.commands.has(name))) return
 
         let cmd = document.commands.get(name)
         cmd.execute({ document, args })
