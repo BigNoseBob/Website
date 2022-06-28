@@ -35,9 +35,15 @@ async function main() {
             url = '/index.html'
 
             let ip = parseIp(req)
-            let ip_data = await ip_lookup(ip.substring(7))    // Returns it in ipv4 format
+            ip_lookup(ip.substring(7)).then(data => {   // Returns it in ipv4 format
+                console.log({ 
+                    ip: data.ip, 
+                    city: data.city, 
+                    state_prov: data.state_prov, 
+                    country_name: data.country_name 
+                })
+            }).catch(err => console.error(err))
 
-            console.log(ip_data)
         }
         res.writeHead(200, {
             "Content-Type": (url.endsWith('.jpeg') || url.endsWith('.ico'))? "image/jpeg" : "text/html"
