@@ -13,7 +13,7 @@ const msgs = [
     "Check out W102.7 in NY, NJ, and PA.",
     "Check out SQUAD - Private Division.",
     "cd projects",
-    "Is the #1 or #2 restaraunt place in a city better?",
+    "Is the #1 or #2 restaurant place in a city better?",
 ]
 
 function sleep(ms) {
