@@ -20,7 +20,23 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function random_typing(input_field, string, { delay }) {
+function random(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+async function random_typing(element, string, { delay, min }) {
+
+    delay = delay || 1000  // ms
+    min = min || 100
+    
+    for (let i = 0; i < string.length; i++) {   // Fencepost problem???
+        element.innerHTML += string[i]
+        await sleep(random(delay, min))
+    }
+
+}
+
+async function random_typing_input(input_field, string, { delay }) {
 
     delay = delay || 1000  // ms
     
@@ -33,9 +49,23 @@ async function random_typing(input_field, string, { delay }) {
 
 export async function main() {
 
-    await sleep(1500)
     let cli_input = document.getElementById('cli_input')
+    let title = document.getElementById('title')
+    title.innerHTML = null
+    let body = document.getElementById('body')
+
+    let title_message_1 = 'Hello,'
+    let title_message_2 = 'my name is Oliver.'
+
+    await sleep(500)
+    await random_typing(title, title_message_1, { delay: 100 })
+    title.innerHTML += '<br>'
+    await sleep(500)
+    await random_typing(title, title_message_2, { delay: 100 })
+    body.style.animation = 'fadeIn 1s forwards'
+    
+    await sleep(1500)
     let message = msgs[Math.floor(Math.random() * msgs.length)]
-    random_typing(cli_input, message, { delay: 5000 / message.length })
+    random_typing_input(cli_input, message, { delay: 5000 / message.length })
 
 }

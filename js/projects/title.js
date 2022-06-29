@@ -5,13 +5,17 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function random(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 async function random_typing(element, string, { delay }) {
 
     delay = delay || 1000  // ms
     
     for (let i = 0; i < string.length; i++) {   // Fencepost problem???
         element.innerHTML += string[i]
-        await sleep(Math.floor(delay * Math.random()))
+        await sleep(random(delay, 100))
     }
 
 }
