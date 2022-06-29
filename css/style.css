@@ -19,3 +19,11 @@ a.navlink:hover {
     animation: 1s blink_cursor step-end infinite;
     /* caret-color: transparent; */
 }
+.fade-in {
+    animation: fadeIn 2s forwards;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+

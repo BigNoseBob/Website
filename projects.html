@@ -1,0 +1,83 @@
+<!-- Oliver Rayner -->
+<!-- April 2022 -->
+
+<!DOCTYPE html>
+
+<style src="css/style.css"></style>
+<script type="module" src="js/projects/main.js"></script>
+
+<html>
+
+<header>
+    <meta charset="UTF-8">
+    <title>Oliver Rayner</title>  <!--This is the thingy that appears in the hotbar-->
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</header>
+
+<body>
+
+    <div class="main" id="title" style="text-align: left; font-family: monospace; padding-top: 20px;">
+
+        <h1 id='gort_title'>This is GORT</h1>
+
+    </div>
+
+    <div class="main" id="description" style="font-family: monospace; opacity: 0;">
+
+        <p>
+            <img src="images/Gort_Discord_nobg_crop.jpeg" alt="Gort Firing" style="width: 150px; float: right; padding-left: 10px;">
+            Gort is a music-playing Discord Bot with a variety of features. Most notably, Gort is <b>my</b> project, 
+            which means it's constantly improving. With Gort, you can listen to high-quality media through discord calls
+            completely free of cost.
+            <br><br>
+            Add Gort to <a class="navlink" style="color: #1E90FF;" href="https://discord.com/api/oauth2/authorize?client_id=858698763585847317&permissions=2151140416&redirect_uri=https%3A%2F%2Foliverr.dev%2Fprojects.html%2F&scope=bot%20applications.commands" target="_blank">your</a> Discord server.
+        </p>
+
+        <div>
+            <h2>Commands</h2>
+
+            <p>
+                Gort's commands can be accessed through Discord's <b>slash command</b> interface, or through the use of
+                plain-old <b>text commands</b> by prefix-ing the command with Gort's server prefix (<b>!</b> by default).
+                <br><br>
+                [arg] - <b>required</b> parameter<br>
+                (arg) - <b>optional</b> parameter
+            </p>
+
+            <h3>The Essentials</h3>
+            <ul>
+                <li><b>/play</b> [query] - query to search and play</li>    
+                <li><b>/join</b> - pulls Gort into your voice channel</li>  
+                <li><b>/disconnect</b> - kicks Gort from your voice channel and clears the queue</li>
+            </ul>
+            
+            <h3>Nice-to-Haves</h3>
+            <ul>
+                <li><b>/queue</b> - view the current queue of media</li>
+                <li><b>/nowplaying</b> - view the currently playing media</li>
+                <li><b>/clear</b> - clear the current queue of media</li>
+                <li><b>/forceplay</b> [query] - skips the currently playing media, searches for and plays query</li>
+            </ul>
+
+            <h3>Configuration</h3>
+            <ul>
+                <li><b>/config</b> - regenerate the config file for your server</li>
+                <li><b>/prefix</b> (prefix) - view or set Gort's command prefix</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div style="text-align: center; font-family: monospace; position: fixed; bottom: 0; width:100%;">
+
+        <p class='fade-in'>
+            Oliver Rayner 2022<br>oliverr@mit.edu / +1 (914) 708 8835 / oliver.e.rayner@gmail.com
+        </p>
+
+    </div>
+    
+</body>
+
+</html>
