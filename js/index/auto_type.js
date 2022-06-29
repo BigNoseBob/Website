@@ -14,6 +14,7 @@ const msgs = [
     "Check out SQUAD - Private Division.",
     "cd projects",
     "Is the #1 or #2 restaurant place in a city better?",
+    "Unified Engineerinig has me uni-fried"
 ]
 
 function sleep(ms) {

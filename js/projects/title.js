@@ -9,13 +9,14 @@ function random(min, max) { // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-async function random_typing(element, string, { delay }) {
+async function random_typing(element, string, { delay, min }) {
 
     delay = delay || 1000  // ms
+    min = min || 100
     
     for (let i = 0; i < string.length; i++) {   // Fencepost problem???
         element.innerHTML += string[i]
-        await sleep(random(delay, 100))
+        await sleep(random(delay, min))
     }
 
 }
@@ -28,7 +29,7 @@ export async function main() {
     title.innerHTML = null
     await sleep(1000)
     let message = 'This is GORT'
-    await random_typing(title, message, { delay: 4000 / message.length })
+    await random_typing(title, message, { delay: 100 })
 
     description.style.animation = 'fadeIn 1s forwards'
 
