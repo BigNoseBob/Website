@@ -36,9 +36,7 @@ export function main() {
         document.commands.set(cmd.name, cmd)
     }
 
-    let cli_prefix = document.getElementById('cli_prefix')
     let cli_input = document.getElementById('cli_input')
-    let cli = document.getElementById('cli')
   
     cli_input.addEventListener('keypress', event => {
       if (event.key === 'Enter') {
