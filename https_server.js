@@ -17,6 +17,15 @@ async function ip_lookup(ipv4) {
 
 const parseIp = (req) => req.headers['x-forwarded-for']?.split(',').shift() || req.socket?.remoteAddress
 
+const EXTENSIONS = {
+    '.js': 'text/javascript',
+    '.html': 'text/html',
+    '.ico': 'image/jpeg',
+    '.png': 'image/png',
+    '.jpeg': 'image/jpeg',
+    '.css': 'text/css',
+}
+
 async function main() {
 	
     // HTTP Server
@@ -29,6 +38,8 @@ async function main() {
     let server = https.createServer(options, async (req, res) => {
 
         let url = req.url
+        let extension = EXTENSIONS[url.substring(url.indexOf('.'))] || 'text/html'
+
         if (url === '/') {
             url = '/index.html'
 
@@ -46,7 +57,7 @@ async function main() {
 
         }
         res.writeHead(200, {
-            "Content-Type": (url.endsWith('.jpeg') || url.endsWith('.ico'))? "image/jpeg" : "text/html"
+            "Content-Type": extension
         })
         fs.readFile(__dirname + url, (err, data) => {
             res.end(data)

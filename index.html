@@ -19,20 +19,14 @@
         resize: none;
         outline: none;
         font-family: monospace;
+        animation: 1s blink_cursor step-end infinite;
         /* caret-color: transparent; */
-    }
-    .blink {
-        animation: blinker 2s linear infinite;
-    }
-    @keyframes blinker {
-        50% {
-            opacity: 0;
-        }
     }
 </style>
 
-<script src="js/scripts.js"></script>
-<script src="js/cli.js"></script>
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/cli.js"></script>
+<script type="module" src="js/scroll_fade.js"></script>
 
 <html>
 
@@ -59,7 +53,7 @@
 
     <div class="main" id="cli" style="text-align: left; font-family: monospace; opacity: 1; padding-top: 120px;">
         
-        <a class="blink" id="cli_prefix"><b>>></b></a> <input class="input" id="cli_input" size="50">
+        <b>>></b> <input class="input" id="cli_input" size="50" autofocus>
 
     </div>
 

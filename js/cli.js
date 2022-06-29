@@ -5,63 +5,31 @@
 
 const COMMANDS = [
 
-    {
-        name: 'ping',
-        description: 'replies pong',
-        execute: function({ document, args }) {
+  {
+      name: 'ping',
+      description: 'replies pong',
+      execute: function({ document, args }) {
+          console.log('pong!')
+          alert('pong!')
+      }
+  },
 
-            console.log('pong!')
-            alert('pong!')
-
-        }
-    },
-
-    {
-        name: 'spotify_top'
-    }
+  {
+      name: 'spotify_top',
+      description: 'shows you your spot'
+  }
 
 ]
 
 function parser(string) {
 
-    let args = string.split(' ')
-    console.log(args)
-
-    let name = args[0]
-    return [name, args.slice(1)]
+  let args = string.split(' ')
+  let name = args[0]
+  return [name, args.slice(1)]
 
 }
 
-function fadeOutOnScroll(element) {
-
-    if (!element) return
-    
-    var distanceToTop = window.pageYOffset + element.getBoundingClientRect().top;
-    var elementHeight = element.offsetHeight;
-    var scrollTop = document.documentElement.scrollTop;
-    
-    var opacity = 1;
-    
-    if (scrollTop > distanceToTop) {
-        opacity = 1 - (scrollTop - (distanceToTop - 75)) / (elementHeight + 75);
-    }
-  
-    console.log(opacity)
-    
-    if (opacity >= 0) {
-        element.style.opacity = opacity;
-    }
-}
-
-function main() {
-
-    let title = document.getElementById('title')
-    
-    function scrollHandler() {
-        fadeOutOnScroll(title)
-    }
-      
-    window.addEventListener('scroll', scrollHandler)
+export function main() {
 
     document.commands = new Map()
     for (let cmd of COMMANDS) {
@@ -87,13 +55,7 @@ function main() {
       }
     })
     cli_input.addEventListener('click', event => {
-      cli_prefix.style.animation = "blinker 2s linear forwards"
+      cli_input.style.animation = "1s blink_cursor step-end forward"
     })
 
-}
-
-
-
-window.onload = () => {
-    main()   
 }
