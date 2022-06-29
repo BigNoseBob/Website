@@ -4,11 +4,13 @@
 // pseudo-animation
 
 const msgs = [
-    "Hello, world!",
+    "Who needs a development package anyways?",
     "Greetings, Mr. Anderson.",
     "[418] I'm a teapot.",
     "help.",
-    "People think I'm good at math, but I'm really not."
+    "I'm an Aerospace Engineer.",
+    "Error: Cannot find modu - aha just kidding.",
+    "Check out W102.7 in NY, NJ, and PA.",
 ]
 
 function sleep(ms) {
