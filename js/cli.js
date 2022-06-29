@@ -9,7 +9,6 @@ const COMMANDS = [
       name: 'ping',
       description: 'replies pong',
       execute: function({ document, args }) {
-          console.log('pong!')
           alert('pong!')
       }
   },
