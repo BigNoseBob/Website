@@ -14,7 +14,7 @@ const msgs = [
     "Check out SQUAD - Private Division.",
     "cd projects",
     "Is the #1 or #2 restaurant place in a city better?",
-    "Unified Engineerinig has me uni-fried.",
+    "Don't take Unified.",
     "Have you checked out GORT?",
     "I'm acutally a real life cartoon character.",
 ]

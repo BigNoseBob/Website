@@ -25,6 +25,7 @@ export async function main() {
 
     let title = document.getElementById('gort_title')
     let description = document.getElementById('description')
+    let left = document.getElementById('left')
 
     title.innerHTML = null
     await sleep(1000)
@@ -32,5 +33,6 @@ export async function main() {
     await random_typing(title, message, { delay: 100 })
 
     description.style.animation = 'fadeIn 1s forwards'
+    left.style.animation = 'fadeIn 1s forwards'
 
 }
