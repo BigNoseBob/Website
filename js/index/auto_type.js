@@ -7,16 +7,15 @@ const msgs = [
     "Who needs a development package anyways?",
     "Greetings, Mr. Anderson.",
     "[418] I'm a teapot.",
-    "help.",
     "I'm actually an Aerospace Engineer.",
     "Error: Cannot find modu - aha just kidding.",
     "Check out W102.7 in NY, NJ, and PA.",
     "Check out SQUAD - Private Division.",
     "cd projects",
-    "Is the #1 or #2 restaurant place in a city better?",
+    "Is the #1 or #2 restaurant in a city better?",
     "Don't take Unified.",
     "Have you checked out GORT?",
-    "I'm acutally a real life cartoon character.",
+    "I'm a cartoon character.",
 ]
 
 function sleep(ms) {
@@ -56,6 +55,7 @@ export async function main() {
     let title = document.getElementById('title')
     title.innerHTML = null
     let body = document.getElementById('body')
+    let navbar = document.getElementById('left')
 
     let title_message_1 = 'Hello,'
     let title_message_2 = 'my name is Oliver.'
@@ -66,6 +66,7 @@ export async function main() {
     await sleep(500)
     await random_typing(title, title_message_2, { delay: 100 })
     body.style.animation = 'fadeIn 1s forwards'
+    navbar.style.animation = 'fadeIn 1s forwards'
     
     await sleep(1500)
     let message = msgs[Math.floor(Math.random() * msgs.length)]
