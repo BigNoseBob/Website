@@ -79,7 +79,7 @@ export async function main() {
     elements['nav0'].onclick = () => {
         replace_element(elements['nav1'], 'MIT SPL', { href: '/STEP1.html' })
         replace_element(elements['nav2'], 'GitHub', { href: 'https://github.com/BigNoseBob' })
-        replace_element(elements['nav3'], 'GORT', { href: '/projects.html' })
+        replace_element(elements['nav3'], 'GORT', { href: '/gort.html' })
     }
 
 
