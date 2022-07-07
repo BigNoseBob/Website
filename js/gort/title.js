@@ -27,6 +27,16 @@ export async function main() {
     let description = document.getElementById('description')
     let left = document.getElementById('left')
 
+    let guild_count = document.getElementById('guild_count')
+    let user_count = document.getElementById('user_count')
+
+    fetch('http://localhost:4078/gort/guilds').then(response => response.json()).then(data => {
+        guild_count.textContent = `SERVER COUNT: ${data.size}`
+    })
+    fetch('http://localhost:4078/gort/users').then(response => response.json()).then(data => {
+        user_count.textContent = `USER COUNT: ${data.size}`
+    })
+
     title.innerHTML = null
     await sleep(1000)
     let message = 'This is GORT'
@@ -34,5 +44,6 @@ export async function main() {
 
     description.style.animation = 'fadeIn 1s forwards'
     left.style.animation = 'fadeIn 1s forwards'
+
 
 }
