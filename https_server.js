@@ -73,7 +73,7 @@ async function main() {
     })
 
     server.listen(port)
-    console.log(`Listening on https://oliverr.dev:${port}`)
+    console.log(`Listening on https://localhost:${port}`)
 
 }
 

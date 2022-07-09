@@ -2,8 +2,8 @@
    June 2022 */
 
 .main { width: 600px; margin: 0 auto; }
-.left { margin: 0 0 0 auto; padding-top: 20px; padding-bottom: 20px; }
-.right { margin: 0 auto 0 0; padding-top: 20px; padding-bottom: 20px; }
+.left { width: 200px; margin: 0 0 0 auto; padding-top: 20px; padding-bottom: 20px; }
+.right { width: 200px; margin: 0 auto 0 0; padding-top: 20px; padding-bottom: 20px; }
 .center_image {
     width: 102.5%;
     position: relative;
