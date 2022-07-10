@@ -65,7 +65,7 @@ async function main() {
 
         if (headers.host === 'api.oliverr.dev') {
             res.writeHead(302, {
-                "Location": 'http://localhost:4078'
+                "Location": '../RalphBot/API/index.html'
             })
             res.end()
             return
