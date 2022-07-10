@@ -64,9 +64,7 @@ async function main() {
         if (REQ) console.log(req)
 
         if (headers.host === 'api.oliverr.dev') {
-            res.writeHead(302, {
-                "Location": "18.224.209.251:4078"
-            })
+            res.redirect("18.224.209.251:4078")
             res.end()
             return
         }
