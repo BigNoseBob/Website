@@ -63,13 +63,8 @@ async function main() {
         if (URLS) console.log(url, extension)
         if (REQ) console.log(req)
 
-        if (headers.host === 'api.oliverr.dev') {
-            res.writeHead(301, {
-                "Location": "18.224.209.251:4078"
-            })
-            res.end()
+        if (headers.host === 'api.oliverr.dev')
             return
-        }
 
         if (url === '/') {
             url = '/index.html'
