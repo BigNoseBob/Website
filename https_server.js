@@ -65,7 +65,7 @@ async function main() {
 
         if (headers.host === 'api.oliverr.dev') {
             res.writeHead(302, {
-                "Location": "api.oliverr.dev:4078"
+                "Location": "18.224.209.251:4078"
             })
             res.end()
             return
