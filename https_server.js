@@ -17,6 +17,22 @@ async function ip_lookup(ipv4) {
 
 const parseIp = (req) => req.headers['x-forwarded-for']?.split(',').shift() || req.socket?.remoteAddress
 
+async function get_location(req) {
+
+    let ip = parseIp(req)
+    ip_lookup(ip.substring(7)).then(data => {   // Returns it in ipv4 format
+        console.log({ 
+            ip: data.ip, 
+            city: data.city, 
+            state_prov: data.state_prov, 
+            country_name: data.country_name,
+            coordinates: [data.latitude, data.longitude],
+            user_agent: req.headers['user-agent'],
+        })
+    }).catch(err => console.error(err))
+
+}
+
 const EXTENSIONS = {
     '.js': 'text/javascript',
     '.html': 'text/html',
@@ -38,30 +54,18 @@ async function main() {
 
     const URLS = process.argv.includes('-u')
     const IPS = process.argv.includes('-i')
+    const REQ = process.argv.includes('-r')
 
     let server = https.createServer(options, async (req, res) => {
 
         let url = req.url
         let extension = EXTENSIONS[url.substring(url.indexOf('.'))] || 'text/html'
         if (URLS) console.log(url, extension)
+        if (REQ) console.log(req)
 
         if (url === '/') {
             url = '/index.html'
-
-            if (IPS) {
-                let ip = parseIp(req)
-                ip_lookup(ip.substring(7)).then(data => {   // Returns it in ipv4 format
-                    console.log({ 
-                        ip: data.ip, 
-                        city: data.city, 
-                        state_prov: data.state_prov, 
-                        country_name: data.country_name,
-                        coordinates: [data.latitude, data.longitude],
-                        user_agent: req.headers['user-agent'],
-                    })
-                }).catch(err => console.error(err))
-            }
-
+            if (IPS) get_location(req)
         }
         res.writeHead(200, {
             "Content-Type": extension
