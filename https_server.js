@@ -58,10 +58,18 @@ async function main() {
 
     let server = https.createServer(options, async (req, res) => {
 
-        let url = req.url
+        let url = req.url, headers = req.headers
         let extension = EXTENSIONS[url.substring(url.indexOf('.'))] || 'text/html'
         if (URLS) console.log(url, extension)
         if (REQ) console.log(req)
+
+        if (headers.host === 'api.oliverr.dev') {
+            res.writeHead(302, {
+                "Location": 'http://localhost:4078'
+            })
+            res.end()
+            return
+        }
 
         if (url === '/') {
             url = '/index.html'
