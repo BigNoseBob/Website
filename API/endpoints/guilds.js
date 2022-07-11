@@ -3,6 +3,8 @@
 
 // Users endpoint. Returns all cached users
 
+const { user_guilds } = require('../discord.js')
+
 module.exports = {
 
     data: {
@@ -10,7 +12,8 @@ module.exports = {
         description: "Returns all cached guilds"
     },
     async execute({ client }) {
-        return { cache: client.guilds.cache, size: client.guilds.cache.size }
+        const guilds = await user_guilds()
+        return { cache: guilds, size: guilds.length }
     }
 
 }
