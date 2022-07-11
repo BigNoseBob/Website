@@ -44,7 +44,8 @@ const EXTENSIONS = {
     '.png': 'image/png',
     '.jpeg': 'image/jpeg',
     '.css': 'text/css',
-    '.txt': 'text/plain'
+    '.txt': 'text/plain',
+    '.env': 'DISALLOWED',
 }
 
 
@@ -69,6 +70,11 @@ async function main() {
 
         let url = req.url, headers = req.headers
         let extension = EXTENSIONS[url.substring(url.indexOf('.'))] || 'text/html'
+        if (extension === 'DISALLOWED') {
+            res.end('DISALLOWED')
+            return
+        }
+
         if (URLS) console.log(url, extension)
         if (REQ) console.log(req)
 
