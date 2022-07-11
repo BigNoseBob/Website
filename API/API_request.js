@@ -4,7 +4,7 @@
 // Trying to abstract how I'm handling the API requests
 
 const fs = require('fs')
-const config = JSON.parse(fs.readFileSync('./config.json'))
+const config = JSON.parse(fs.readFileSync(__dirname + '/config.json'))
 const API_ENDPOINTS = config.api_endpoints
 const endpoints = load_endpoints()
 
