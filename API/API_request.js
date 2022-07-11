@@ -49,7 +49,7 @@ async function initialize() {
 
         let url = req.url, data, headers = req.headers;
 
-        console.log(gort_api_keys, gort_api_keys.includes(headers["Authorization"]))
+        console.log(gort_api_keys, gort_api_keys.includes(headers["Authorization"]), headers)
 
         if (!(gort_api_keys.includes(headers["Authorization"]))) {
             res.writeHead(400, {
