@@ -4,6 +4,7 @@
 const https = require('node:https')
 const fs = require('node:fs')
 const axios = require('axios')
+const { API_call } = require('./API/API_request')
 
 const ipgeolocation_api_key = '8b1cd26a9bab447788846b4b07aa3852'
 
@@ -63,8 +64,10 @@ async function main() {
         if (URLS) console.log(url, extension)
         if (REQ) console.log(req)
 
-        if (headers.host === 'api.oliverr.dev')
+        if (headers.host === 'api.oliverr.dev') {
+            API_call(req, res)
             return
+        }
 
         if (url === '/') {
             url = '/index.html'
