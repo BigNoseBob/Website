@@ -48,16 +48,6 @@ async function initialize() {
     async function API_call(req, res) {
 
         let url = req.url, data, headers = req.headers;
-
-        if (!(gort_api_keys.includes(headers["authorization"])) && url != '/') {
-            res.writeHead(400, {
-                "Content-Type": "text/json"
-            })
-            data = response_template({ status: "failure", code: 400, message: "Unauthorized" })
-            res.end(JSON.stringify(data))
-            return
-        }
-
         const endpoint = endpoints.get(API_ENDPOINTS[req.url])
     
         if(!endpoint) {
@@ -86,6 +76,15 @@ async function initialize() {
             return
     
         } else {
+
+            if (!(gort_api_keys.includes(headers["authorization"])) && url != '/') {
+                res.writeHead(400, {
+                    "Content-Type": "text/json"
+                })
+                data = response_template({ status: "failure", code: 400, message: "Unauthorized" })
+                res.end(JSON.stringify(data))
+                return
+            }
     
             res.writeHead(200, {
                 "Content-Type": 'text/json'
