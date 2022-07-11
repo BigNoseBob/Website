@@ -6,6 +6,7 @@
 const fs = require('fs')
 const config = JSON.parse(fs.readFileSync(__dirname + '/config.json'))
 const API_ENDPOINTS = config.api_endpoints
+const gort_api_keys = JSON.parse(fs.readFileSync(__dirname + '/api_keys.keys')).keys
 const endpoints = load_endpoints()
 
 const EXTENSIONS = {
@@ -46,7 +47,16 @@ async function initialize() {
 
     async function API_call(req, res) {
 
-        let url = req.url, data;
+        let url = req.url, data, headers = req.headers;
+        if (!(gort_api_keys.includes(headers["Authorization"]))) {
+            res.writeHead(400, {
+                "Content-Type": "text/json"
+            })
+            data = response_template({ status: "failure", code: 400, message: "Unauthorized" })
+            res.end(JSON.stringify(data))
+            return
+        }
+
         const endpoint = endpoints.get(API_ENDPOINTS[req.url])
     
         if(!endpoint) {
