@@ -8,10 +8,9 @@ const DiscordJS = require('discord.js')
 const fs = require('fs')
 
 
-async function login({ FLAGS }) {
+async function login() {
     
     require('dotenv').config()
-    if (FLAGS) console.log(DiscordJS.Intents.FLAGS)
 
     // Create the client
     const client = new DiscordJS.Client({ intents: [1, 2, 128, 512, 4096] })    // Use -f to see all the flags
@@ -25,7 +24,7 @@ async function login({ FLAGS }) {
 async function main() {
 
     // Login and grab client and run the http server
-    const client = await login({ FLAGS : process.argv.includes('-f') })
+    const client = await login()
 
 }
 
