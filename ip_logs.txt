@@ -1,0 +1,5 @@
+ip,71.168.210.16: city,Camden
+: state_prov,New Jersey
+: country_name,United States
+: coordinates,39.92595,-75.11962
+: user_agent,Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.5 Safari/605.1.15
