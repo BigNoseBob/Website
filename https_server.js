@@ -4,7 +4,7 @@
 const https = require('node:https')
 const fs = require('node:fs')
 const axios = require('axios')
-const { API_call } = require('./API/API_request')
+const { initialize } = require('./API/API_request')
 
 const ipgeolocation_api_key = '8b1cd26a9bab447788846b4b07aa3852'
 
@@ -57,6 +57,10 @@ async function main() {
     const IPS = process.argv.includes('-i')
     const REQ = process.argv.includes('-r')
 
+    // Initialize API
+    const api_call = await initialize()
+    console.log('API running.')
+
     let server = https.createServer(options, async (req, res) => {
 
         let url = req.url, headers = req.headers
@@ -65,7 +69,7 @@ async function main() {
         if (REQ) console.log(req)
 
         if (headers.host === 'api.oliverr.dev') {
-            API_call(req, res)
+            api_call(req, res)
             return
         }
 

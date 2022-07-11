@@ -8,6 +8,8 @@ const config = JSON.parse(fs.readFileSync(__dirname + '/config.json'))
 const API_ENDPOINTS = config.api_endpoints
 const endpoints = load_endpoints()
 
+const client = require(__dirname + '/bot.js').login()
+
 const EXTENSIONS = {
     '.js': 'text/javascript',
     '.html': 'text/html',
@@ -29,51 +31,62 @@ function load_endpoints(dir=__dirname + '/endpoints') {
 
 }
 
-async function API_call(req, res) {
 
-    let url = req.url, data;
-    const endpoint = endpoints.get(API_ENDPOINTS[req.url])
 
-    console.log(url)
 
-    if(!endpoint) {
+async function initialize() {
 
-        let extension = EXTENSIONS[url.substring(url.indexOf('.'))] || 'text/html'
+    const client = await require(__dirname + '/bot.js').login()
 
-        if (!extension) {
-            res.writeHead(404, {
+    async function API_call(req, res) {
+
+        let url = req.url, data;
+        const endpoint = endpoints.get(API_ENDPOINTS[req.url])
+    
+        console.log(url)
+    
+        if(!endpoint) {
+    
+            let extension = EXTENSIONS[url.substring(url.indexOf('.'))] || 'text/html'
+    
+            if (!extension) {
+                res.writeHead(404, {
+                    "Content-Type": 'text/json'
+                })
+                data = response_template({ status: "failure", code: 404, message: "Invalid API endpoint" })    
+                res.end(JSON.stringify(data))
+                return
+            }
+    
+            // If the call is just to the side itself
+            if (url === '/')
+                url = '/index.html'
+    
+            res.writeHead(200, {
+                "Content-Type": extension
+            })
+            fs.readFile(__dirname + url, (err, data) => {
+                res.end(data)
+            })
+            return
+    
+        } else {
+    
+            res.writeHead(200, {
                 "Content-Type": 'text/json'
             })
-            data = response_template({ status: "failure", code: 404, message: "Invalid API endpoint" })    
-            res.end(JSON.stringify(data))
-            return
+            let response_obj = await endpoint.execute({ client })
+            data = response_template({ status: "success", code: 200, data: response_obj })
+    
         }
-
-        // If the call is just to the side itself
-        if (url === '/')
-            url = '/index.html'
-
-        res.writeHead(200, {
-            "Content-Type": extension
-        })
-        fs.readFile(__dirname + url, (err, data) => {
-            res.end(data)
-        })
-        return
-
-    } else {
-
-        res.writeHead(200, {
-            "Content-Type": 'text/json'
-        })
-        let response_obj = await endpoint.execute({ client })
-        data = response_template({ status: "success", code: 200, data: response_obj })
-
+        res.end(JSON.stringify(data))
+    
     }
-    res.end(JSON.stringify(data))
+
+    return API_call
 
 }
 
 module.exports = {
-    API_call,
+    initialize,
 }
