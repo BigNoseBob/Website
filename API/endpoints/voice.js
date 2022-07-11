@@ -2,6 +2,7 @@
 // July 2022
 
 // Voice endpoint. Returns current number of voiceConnections
+const axios = require('axios')
 
 module.exports = {
 
@@ -10,7 +11,8 @@ module.exports = {
         description: "Returns current number of active voiceConnections"
     },
     async execute({ client }) {
-        return { adapters: client.voice.adapters, size: client.voice.adapters.size }
+        const res = await axios({ method: 'GET', url:'http://localhost:4078/gort/voice', responseType: 'json' })
+        return res.data.data
     }
 
 }
