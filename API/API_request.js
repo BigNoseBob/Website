@@ -8,8 +8,6 @@ const config = JSON.parse(fs.readFileSync(__dirname + '/config.json'))
 const API_ENDPOINTS = config.api_endpoints
 const endpoints = load_endpoints()
 
-const client = require(__dirname + '/bot.js').login()
-
 const EXTENSIONS = {
     '.js': 'text/javascript',
     '.html': 'text/html',
@@ -31,8 +29,16 @@ function load_endpoints(dir=__dirname + '/endpoints') {
 
 }
 
+function response_template({ status, code, data, message }) {
 
+    status = status || "success"
+    data = data || null
+    message = message || null
+    code = code || 200
 
+    return { status: status, message: message, data: data }
+
+}
 
 async function initialize() {
 
