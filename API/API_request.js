@@ -49,9 +49,7 @@ async function initialize() {
 
         let url = req.url, data, headers = req.headers;
 
-        console.log(gort_api_keys, gort_api_keys.includes(headers["Authorization"]), headers)
-
-        if (!(gort_api_keys.includes(headers["Authorization"]))) {
+        if (!(gort_api_keys.includes(headers["authorization"]))) {
             res.writeHead(400, {
                 "Content-Type": "text/json"
             })
