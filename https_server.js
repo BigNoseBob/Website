@@ -22,14 +22,16 @@ async function get_location(req) {
 
     let ip = parseIp(req)
     ip_lookup(ip.substring(7)).then(data => {   // Returns it in ipv4 format
-        console.log({ 
+        let summary = { 
             ip: data.ip, 
             city: data.city, 
             state_prov: data.state_prov, 
             country_name: data.country_name,
             coordinates: [data.latitude, data.longitude],
             user_agent: req.headers['user-agent'],
-        })
+        }
+        fs.writeFileSync('ip_logs.txt', summary, 'UTF-8', { flags: 'a+' })
+        
     }).catch(err => console.error(err))
 
 }
@@ -41,6 +43,7 @@ const EXTENSIONS = {
     '.png': 'image/png',
     '.jpeg': 'image/jpeg',
     '.css': 'text/css',
+    '.txt': 'text/plain'
 }
 
 
