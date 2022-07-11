@@ -49,11 +49,13 @@ async function initialize() {
         let url = req.url, data;
         const endpoint = endpoints.get(API_ENDPOINTS[req.url])
     
-        console.log(url)
-    
         if(!endpoint) {
+
+            // If the call is just to the side itself
+            if (url === '/')
+                url = '/index.html'
     
-            let extension = EXTENSIONS[url.substring(url.indexOf('.'))] || 'text/html'
+            let extension = EXTENSIONS[url.substring(url.indexOf('.'))]
     
             if (!extension) {
                 res.writeHead(404, {
@@ -63,10 +65,6 @@ async function initialize() {
                 res.end(JSON.stringify(data))
                 return
             }
-    
-            // If the call is just to the side itself
-            if (url === '/')
-                url = '/index.html'
     
             res.writeHead(200, {
                 "Content-Type": extension
