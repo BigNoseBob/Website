@@ -46,7 +46,7 @@ const EXTENSIONS = {
     '.css': 'text/css',
     '.txt': 'text/plain',
     '.env': 'DISALLOWED',
-    '.pem': 'DISALOWED',
+    '.pem': 'DISALLOWED',
 }
 
 
