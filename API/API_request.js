@@ -31,9 +31,10 @@ function load_endpoints(dir=__dirname + '/endpoints') {
 
 async function API_call(req, res) {
 
-    let url = req.url
+    let url = req.url, data;
     const endpoint = endpoints.get(API_ENDPOINTS[req.url])
-    let data;
+
+    console.log(url)
 
     if(!endpoint) {
 
