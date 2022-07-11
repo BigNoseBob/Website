@@ -31,7 +31,7 @@ async function get_location(req) {
             user_agent: req.headers['user-agent'],
         }
         let str = Object.entries(summary).reduce((k, v) => `${k}: ${v}\n`)
-        fs.writeFileSync('ip_logs.txt', str + '\n', 'UTF-8', { flags: 'a+' })
+        fs.appendFileSync('ip_logs.txt', str + '\n', 'UTF-8', { flags: 'a+' })
         
     }).catch(err => console.error(err))
 
