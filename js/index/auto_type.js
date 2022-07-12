@@ -56,6 +56,8 @@ export async function main() {
     title.innerHTML = null
     let body = document.getElementById('body')
     let navbar = document.getElementById('left')
+    let buymeacoffee = document.getElementById('buymeacoffee')
+    let linkedin = document.getElementById('linkedin')
 
     let title_message_1 = 'Hello,'
     let title_message_2 = 'my name is Oliver.'
@@ -67,6 +69,9 @@ export async function main() {
     await random_typing(title, title_message_2, { delay: 100 })
     body.style.animation = 'fadeIn 1s forwards'
     navbar.style.animation = 'fadeIn 1s forwards'
+    buymeacoffee.style.animation = 'fadeIn 1s forwards'
+    linkedin.style.animation = 'fadeIn 1s forwards'
+
     
     await sleep(1500)
     let message = msgs[Math.floor(Math.random() * msgs.length)]

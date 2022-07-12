@@ -27,6 +27,7 @@ export async function main() {
     let description = document.getElementById('description')
     let left = document.getElementById('left')
     let buymeacoffee = document.getElementById('buymeacoffee')
+    let linkedin = document.getElementById('linkedin')
 
     let guild_count = document.getElementById('guild_count')
     let user_count = document.getElementById('user_count')
@@ -46,6 +47,7 @@ export async function main() {
     description.style.animation = 'fadeIn 1s forwards'
     left.style.animation = 'fadeIn 1s forwards'
     buymeacoffee.style.animation = 'fadeIn 1s forwards'
+    linkedin.style.animation = 'fadeIn 1s forwards'
 
 
 }
