@@ -79,8 +79,8 @@ async function initialize() {
         } else {
             // It's an API call
 
-            console.log(req.host)
-            if (!(gort_api_keys.includes(headers["authorization"])) && (url != '/' && req.host != 'localhost' )) {
+            console.log(req.headers.host)
+            if (!(gort_api_keys.includes(headers["authorization"])) && (url != '/' && req.headers.host != 'localhost' )) {
                 res.writeHead(400, {
                     "Content-Type": "text/json"
                 })
