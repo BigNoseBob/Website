@@ -80,7 +80,7 @@ async function initialize() {
             // It's an API call
 
             console.log(endpoint)
-            if (!(gort_api_keys.includes(headers["authorization"])) && (url != '/' && endpoint != '/gort/spotify/link' )) {
+            if (!(gort_api_keys.includes(headers["authorization"])) && (url != '/' && endpoint.data?.name != 'spotify_link' )) {
                 res.writeHead(400, {
                     "Content-Type": "text/json"
                 })
