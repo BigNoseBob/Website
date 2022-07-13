@@ -12,10 +12,7 @@ module.exports = {
     async execute({ url, headers }) {
         
         const querystring = url.substring(url.indexOf('?'))
-        const headers = {
-            Authorization: "6Q0otRbN7gchxX5Pdi0aA6fs7LmZd8xXKXDislO6",
-        }
-        const res = await axios({ method: 'POST', url: 'http://localhost:4078' + querystring, headers: headers })
+        const res = await axios({ method: 'POST', url: 'http://localhost:4078' + querystring, headers: { Authorization: "6Q0otRbN7gchxX5Pdi0aA6fs7LmZd8xXKXDislO6" } })
 
     }
 
