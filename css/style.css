@@ -26,13 +26,13 @@
     width: 60vw; 
     margin: auto;
     position: absolute;
-    top: 42.5%;
-    left: 50%;
+    top: 41.0%;
+    left: 50.0%;
     transform: translateY(-50%) translateX(-50%);
 
     font-family: monospace;
     color: limegreen;
-    font-size: large;
+    font-size: xx-large;
 }
 .terminal_input {
     border: none;
