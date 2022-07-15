@@ -43,7 +43,7 @@ p {
     text-align: center;
     height: 20vh;
     /* Should make width adjust depending on iPhone vs. Computer/Other */
-    width: 60vw; 
+    width: 60vw;
     margin: auto;
     position: absolute;
     top: 41.0%;
@@ -77,6 +77,22 @@ p {
     text-align: center;
     margin: 1vw;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    max-width: 600px;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10vw;
+    height: auto;
+}
+.skill_icon {
+    width: 5vw;
+    height: auto;
+}
+.link {
+    text-decoration: none; 
+    color: inherit;
 }
 
 @keyframes fadeIn {
