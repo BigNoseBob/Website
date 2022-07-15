@@ -9,8 +9,28 @@
     position: relative;
     transform: translateX(-1.25%); /*Shift it over to the left*/
 }
-.full_image {
-    background: url("/images/Vintage-Macs001-1024x960.jpeg") no-repeat center center fixed; 
+body {
+    margin: 0;
+    background-color: #EBEBED;
+}
+p {
+    font-size: 2.5vw;
+}
+.full_screen {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.full_image_mac {
+    background: url("/images/Vintage-Macs001-1024x960.jpeg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: inherit;
+}
+.full_image_self {
+    background: url("/images/png-transparent-stick-man-stick-figure-happy-stick-man-photography-smiley-desktop-wallpaper-thumbnail.png") no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -32,7 +52,7 @@
 
     font-family: monospace;
     color: limegreen;
-    font-size: xx-large;
+    font-size: 5vw;
 }
 .terminal_input {
     border: none;
@@ -44,4 +64,22 @@
     color: inherit;
     font-size: inherit;
     text-align: center;
+}
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 25px rgba(102, 99, 99, 0.5) inset;
+  }
+.welcome_page {
+    text-align: center;
+    margin: 1vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

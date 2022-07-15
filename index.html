@@ -2,7 +2,9 @@
 <!-- July 2022 -->
 
 <!DOCTYPE html>
+
 <style src="css/style.css"></style>
+
 <script>
 
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)) 
@@ -28,34 +30,93 @@
         }
     }
 
+    // Not using anymore - could probably get rid
+    function fadeOutOnScroll(element) {
+        if (!element) return
+        var distanceToTop = window.pageYOffset + element.getBoundingClientRect().top;
+        var elementHeight = element.offsetHeight;
+        var scrollTop = document.documentElement.scrollTop;
+        var opacity = 1;
+        if (scrollTop > distanceToTop) {
+            opacity = 1 - (scrollTop - (distanceToTop - 100)) / (elementHeight + 250);
+        }
+        if (opacity >= 0) {
+            element.style.opacity = opacity;
+        }
+    }
+
+    // Not using anymore - could probbaly get rid
+    function fadeInOnScroll(element) {
+        if (!element) return
+        var distanceToTop = window.pageYOffset + element.getBoundingClientRect().top;
+        var elementHeight = element.offsetHeight;
+        var scrollTop = document.documentElement.scrollTop;
+        var opacity = 0;
+        if (scrollTop > distanceToTop - 200) {
+            opacity = (scrollTop - (distanceToTop - 200)) / (elementHeight);
+        }
+        if (opacity >= 0 && opacity) {
+            element.style.opacity = opacity;
+        }
+        console.log(distanceToTop, scrollTop, elementHeight, opacity)
+    }
+
+    function fadeIn(element) {
+        if (document.documentElement.scrollTop > element.offsetHeight) {
+            element.style.animation = 'fadeIn 1s forwards'
+        }
+    }
+
     window.onload = async () => {
 
         const terminal_input = document.getElementById('terminal_input')
-        await sleep(1000)
-        await random_typing_input(terminal_input, 'Hello.', { delay: 100, min: 100 })
-        await sleep(2500)
-        await delete_type_input(terminal_input, { delay: 50, min: 50 })
-        await sleep(1000)
-        await random_typing_input(terminal_input, 'My name is Oliver.', { delay: 100, min: 100 })
-        await sleep(2500)
-        await delete_type_input(terminal_input, { delay: 50, min: 50 })
-        await sleep(1000)
-        await random_typing_input(terminal_input, '[ SCROLL DOWN ]', { delay: 100, min: 100 })
+        const terminal = document.getElementsByClassName('full_image')[0]
+        const welcome = document.getElementById('welcome_page')
+        
+        window.addEventListener('scroll', () => fadeIn(welcome))
+
+        await sleep(2000)
+        await random_typing_input(terminal_input, 'SCROLL.', { delay: 100, min: 100 })
+
     }
 
 </script>
 <html>
 <header>
     <meta charset="UTF-8">
-    <title>Oliver Rayner</title>  <!--This is the thingy that appears in the hotbar-->
+    <title>Oliver Rayner</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/stylesheet.css" type="text/css" charset="utf-8" />
 </header>
-    <body class="full_image">
-        <div class="terminal">
-            <span>
-                <input class="terminal_input" id="terminal_input" value="" autofocus>
-            </span>
-        </div>  
+    <body>
+        <div class="vignette"></div>
+        <div class="full_image_mac" style="top: 0; left: 0; height: 100vh; width: 100vw; text-align: center;">
+            <div class="terminal">
+                <span>
+                    <input class="terminal_input" id="terminal_input" value="" autofocus>
+                </span>
+            </div>
+        </div>
+        <div class="full_screen">
+            <div class="welcome_page" id="welcome_page" style="display: flex; opacity: 0;">
+                <div class="about" style="padding: 5vh 0  5vw 7.5vw">
+                    <div style="width: 40vw; text-align: center; margin: auto; font-family: monospace; font-size: 4.5vw; padding: 2.5vh 0 0 0;">
+                        <h4 style="margin: 0;">Hello, I'm</h4>
+                        <h1 style="margin: 0;">Oliver<a style="color: green;">.</a></h1>
+                        <h5 style="margin: 0;">Nice to meet you</h5>
+                    </div>
+                    <div style="width: 45vw; text-align: justify; margin: auto; font-family: monospace; padding: 2.5vh 3vw;">
+                        <p>
+                            I am a student studying Aerospace Engineering and EECS (Electrical Engineering and
+                            Computer Science) at MIT.
+                        </p>
+                    </div>
+                </div>
+                <div style="margin: auto auto auto 0; padding: 2.5vh 0; float: right;">
+                    <img src="./images/stick-man.png" style="width: 30vw;">
+                </div>
+            </div>
+        <div>
     </body>
 </html>
