@@ -1,6 +1,8 @@
 /* Oliver Rayner
    June 2022 */
 
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+
 .center { width: 60vw; margin: 0 auto; }
 .left { width: 20vw; margin: 0 0 0 auto; padding: 3vw 1vh }
 .right { width: 20vw; margin: 0 auto 0 0; padding: 3vw 1vh }
@@ -22,12 +24,14 @@ p {
     height: 100vh;
 }
 .full_image_mac {
-    background: url("/images/Vintage-Macs001-1024x960.jpeg") no-repeat center center; 
-    -webkit-background-size: cover;
+    background: url("/images/imageedit_1_9390797160.png") no-repeat center center; 
+    /* -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover; */
     color: inherit;
+    background-size: auto 100vh;
+    margin: auto;
 }
 .full_image_self {
     background: url("/images/png-transparent-stick-man-stick-figure-happy-stick-man-photography-smiley-desktop-wallpaper-thumbnail.png") no-repeat center center; 
@@ -52,14 +56,14 @@ p {
 
     font-family: monospace;
     color: limegreen;
-    font-size: 5vw;
+    font-size: min(5vw, 30px);
 }
 .terminal_input {
     border: none;
     border-color: transparent;
     resize: none;
     outline: none;
-    font-family: monospace;
+    font-family: inherit;
     background: transparent;
     color: inherit;
     font-size: inherit;
@@ -75,9 +79,27 @@ p {
   }
 .welcome_page {
     text-align: center;
-    margin: 1vw;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 5vh auto;
+    font-family: 'Josefin Sans', sans-serif;
+    width: 80vw;
     max-width: 600px;
+    font-size: min(4.5vw, 30px);
+    float: center;
+}
+.welcome_page p {
+    font-size: min(3vw, 20px); 
+}
+.welcome_page .about {
+    font-size: min(3vw, 20px);
+}
+.welcome_page h1 {
+
+}
+.welcome_page h6 {
+
+}
+.welcome_page h4 {
+
 }
 .navbar {
     position: fixed;
@@ -87,7 +109,7 @@ p {
     height: auto;
 }
 .skill_icon {
-    width: 5vw;
+    width: min(5vw, 50px);
     height: auto;
 }
 .link {

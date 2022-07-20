@@ -120,6 +120,7 @@
 
         })
 
+        terminal_input.value = null
         await sleep(1500)
         await random_typing_input(terminal_input, 'SCROLL.', { delay: 100, min: 100 })
 
@@ -148,14 +149,14 @@
         </div>
         <div class="full_screen">
             <div class="welcome_page" id="welcome_page" style="display: flex; opacity: 0;">
-                <div style="padding: 5vh 0 5vw 7.5vw">
-                    <div style="width: 40vw; text-align: center; margin: auto; font-family: monospace; font-size: 4.5vw; padding: 2.5vh 0 0 0;">
-                        <h4 style="margin: 0;">Hello, I'm</h4>
-                        <h1 style="margin: 0;">Oliver<a style="color: green;">.</a></h1>
-                        <h5 style="margin: 0;">Nice to meet you</h5>
+                <div>
+                    <div style="text-align: justify; margin: auto; padding: 2.5vh 0 1vh 0;">
+                        <h6 style="margin: 0;">Hello, I'm</h6>
+                        <h1 style="margin: 0; padding-top: 1vh">Oliver<a style="color: green;">.</a></h1>
+                        <!-- <h5 style="margin: 0;">Nice to meet you</h5> -->
                     </div>
-                    <div style="width: 45vw; text-align: left; margin: auto; font-family: monospace; padding: 2.5vh 3vw;">
-                        <h4 style="font-size: 3vw;">ABOUT <input class="terminal_input" id="about_input" style="text-align: left; font-size: 2.75vw; transform: translateY(-1%);" size="16" value=""></h4>
+                    <div class="about" style="text-align: left; margin: auto;">
+                        <h4>ABOUT <input class="terminal_input" id="about_input" style="text-align: left; font-size: min(2.75vw, 15px);" size="16" value=""></h4>
                         <p style="text-align: justify;">
                             I am a student studying Aerospace Engineering and EECS (Electrical Engineering and
                             Computer Science) at MIT.
@@ -163,12 +164,14 @@
                     </div>
                 </div>
                 <div style="margin: auto auto auto 0; padding: 2.5vh 0; float: right;">
-                    <img src="./images/stick-man.png" style="width: 30vw;">
+                    <img src="./images/stick-man.png" style="width: min(30vw, 200px);">
                 </div>
             </div>
-            <div id="about" style="margin: 2.5vh 10.5vw; font-family: monospace; opacity: 0;">
-                <h6 style="margin: 0 0 0 0; font-size: 2.5vw; color: green;">MY SKILLSET</h6>
-                <h1 style="margin-top: 0; font-size: 5vw;">Coding Languages<a style="color: green;">.</a></h1>
+            <div class="welcome_page" id="about" style="font-family: monospace; padding-bottom: 5vh; opacity: 0; text-align: left;">
+                <div style="text-align: left;">
+                    <h6 style="margin: 0; color: green;">MY SKILLSET</h6>
+                    <h1 style="margin-top: 0; font-size: min(5vw, 35px)">Coding Languages<a style="color: green;">.</a></h1>
+                </div>  
                 <p>
                     While trained as an Aerospace Engineer, I have a rather extensive computer science background.
                     I've worked on projects using all of the following.
@@ -186,7 +189,7 @@
                 </div>
                 <p>
                     If you would like to take a look at an application of these skills, feel free to check out my
-                    <a class="link" style="color: green; font-weight: bold;" href="https://github.com/BigNoseBob">GitHub</a>,
+                    <a class="link" style="color: green; font-weight: bold;" href="https://github.com/BigNoseBob" target="__blank">GitHub</a>,
                     where you can find my personal projects, including this webserver and my API.
                 </p>
             </div>
