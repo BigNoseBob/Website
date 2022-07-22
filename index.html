@@ -5,128 +5,6 @@
 
 <style src="css/style.css"></style>
 
-<script>
-
-    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)) 
-    const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
-
-    async function random_typing_input(input_field, string, { delay, min }) {
-        delay = delay || 1000  // ms
-        min = min || 0
-        for (let i = 0; i < string.length; i++) {
-            input_field.value += string[i]
-            await sleep(random(min, delay))
-        }
-    }
-
-    async function delete_type_input(element, { delay, min, chars_to_delete }) {
-        delay = delay || 1000   // ms
-        min = min || 100        // ms
-        chars_to_delete = chars_to_delete || 1000000000
-        while (element.value.length != 0 && chars_to_delete > 0) {
-            element.value = element.value.substring(0, element.value.length - 1)
-            chars_to_delete -= 1
-            await sleep(random(min, delay))
-        }
-    }
-
-    // Not using anymore - could probably get rid
-    function fadeOutOnScroll(element) {
-        if (!element) return
-        var distanceToTop = window.pageYOffset + element.getBoundingClientRect().top;
-        var elementHeight = element.offsetHeight;
-        var scrollTop = document.documentElement.scrollTop;
-        var opacity = 1;
-        if (scrollTop > distanceToTop) {
-            opacity = 1 - (scrollTop - (distanceToTop - 100)) / (elementHeight + 250);
-        }
-        if (opacity >= 0) {
-            element.style.opacity = opacity;
-        }
-    }
-
-    // Not using anymore - could probbaly get rid
-    function fadeInOnScroll(element) {
-        if (!element) return
-        var distanceToTop = window.pageYOffset + element.getBoundingClientRect().top;
-        var elementHeight = element.offsetHeight;
-        var scrollTop = document.documentElement.scrollTop;
-        var opacity = 0;
-        if (scrollTop > distanceToTop - 200) {
-            opacity = (scrollTop - (distanceToTop - 200)) / (elementHeight);
-        }
-        if (opacity >= 0 && opacity) {
-            element.style.opacity = opacity;
-        }
-        console.log(distanceToTop, scrollTop, elementHeight, opacity)
-    }
-
-    function fadeIn(element) {
-        if (document.documentElement.scrollTop > element.offsetHeight) {
-            element.style.animation = 'fadeIn 1s forwards'
-        }
-    }
-
-    window.onload = async () => {
-
-        const terminal_input = document.getElementById('terminal_input')
-        const terminal = document.getElementsByClassName('full_image')[0]
-
-        const welcome = document.getElementById('welcome_page')
-        const about = document.getElementById('about')
-        let triggered = false;
-        
-        window.addEventListener('scroll', async () => { 
-            fadeIn(welcome)
-            fadeIn(about)
-
-            if (triggered) return
-
-            triggered = true
-            await sleep(1000)
-
-            const messages = [
-                // "an Aerospace Engineer.",
-                // "a Computer Scientist.",
-                // "an Electrical Engineer.",
-                "an engineer.",
-                "a rockclimber.",
-                "a cartoon character.",
-                "Johnny Bravo.",
-                "a student.",
-                "a researcher.",
-                "a runner.",
-                "a rower.",
-                "a public speaker.",
-                "Oliverr.",
-                "a golden retreiver.",
-                "a storyteller.",
-                "a brother.",
-                "a teacher.",
-                "an athlete.",
-                "a magician.",
-                "me."
-            ]
-
-            const input = document.getElementById('about_input')
-            
-            while (true) {
-                let message = messages[Math.floor(Math.random() * messages.length)]
-                await random_typing_input(input, message, { delay: 5000 / message.length })
-                await sleep(4000)
-                await delete_type_input(input, { delay: 50, min: 50 })
-                await sleep(1000)
-            }
-
-        })
-
-        terminal_input.value = null
-        await sleep(1500)
-        await random_typing_input(terminal_input, 'SCROLL.', { delay: 100, min: 100 })
-
-    }
-
-</script>
 <html>
 <header>
     <meta charset="UTF-8">
@@ -136,67 +14,44 @@
     <link rel="stylesheet" href="css/stylesheet.css" type="text/css" charset="utf-8" />
 </header>
     <body>
-        <!-- <div class="navbar">
-            <img class="navbar" src="images/109994-200.png">
-        </div> -->
-        <div class="vignette"></div>
-        <div class="full_image_mac" style="top: 0; left: 0; height: 100vh; width: 100vw; text-align: center;">
-            <div class="terminal">
-                <span>
-                    <input class="terminal_input" id="terminal_input" value="" autofocus>
-                </span>
+        <div class="title_page">
+            <div class="navbar">
+                <!-- <img src="/images/logos/bmc_icon_black-2.png" style="width: 50%"> -->
+            </div>
+            <div class="image_self"></div>
+            <div class="title_container">
+                <a class="title_background_text">Oliver Rayner</a>
+                <div class="title_banner">
+                    <h5 style="margin: 0; padding-left: 0.75vw; color: gray;">Hello, my name is</h5>
+                    <h1 style="line-height: 0.6;">Oliver<a style="color: var(--mars-light-orange);">.</a></h1>
+                </div>
+                <div class="title_body">
+                    <div class="title_body_section" style="float: left;">
+                        <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
+                        I'm an MIT student studying Aerospace Engineering and EECS (Electrical Engineering and Computer Science).
+                        <br><br>
+                        I have a passion for <a href="https://github.com/BigNoseBob" target="__blank" style="text-decoration: none; color: var(--mars-dark-orange);">projects</a>
+                    </div>
+                    <div class="title_body_section" style="float: right;">
+                        <!-- Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Ut porttitor leo a diam sollicitudin tempor id. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
+                        I'm an avid <strike style="color: var(--mars-dark-orange); text-decoration-thickness: 3px;"><span style="color: var(--mars-white);">rower</span></strike> climber.
+                        <br><br>
+                        Working with:<br><a class="highlight">Princeton Satellite Systems</a>
+                        <br><br>
+                        I have a rather extensive CS background.<br><br>
+                        <a style="list-style-type: none; font-family: Rock Salt; font-size: 1.5vw; line-height: 1.5; text-align: left;">
+                            <li>Python</li>
+                            <li>MATLAB</li>
+                            <li>C, C++, C#</li>
+                            <li>Java</li>
+                            <li>HTML, CSS, JS</li>
+                            <li>KiCAD + SPICE</li>
+                            <li>Arduino</li>
+                        </a>
+                    </div>
+                </div>
+                <div class="title_body_bottom"></div>
             </div>
         </div>
-        <div class="full_screen">
-            <div class="welcome_page" id="welcome_page" style="display: flex; opacity: 0;">
-                <div>
-                    <div style="text-align: justify; margin: auto; padding: 2.5vh 0 1vh 0;">
-                        <h6 style="margin: 0;">Hello, I'm</h6>
-                        <h1 style="margin: 0; padding-top: 1vh">Oliver<a style="color: green;">.</a></h1>
-                        <!-- <h5 style="margin: 0;">Nice to meet you</h5> -->
-                    </div>
-                    <div class="about" style="text-align: left; margin: auto;">
-                        <h4>ABOUT <input class="terminal_input" id="about_input" style="text-align: left; font-size: min(2.75vw, 15px);" size="16" value=""></h4>
-                        <p style="text-align: justify;">
-                            I am a student studying Aerospace Engineering and EECS (Electrical Engineering and
-                            Computer Science) at MIT.
-                        </p>
-                    </div>
-                </div>
-                <div style="margin: auto auto auto 0; padding: 2.5vh 0; float: right;">
-                    <img src="./images/stick-man.png" style="width: min(30vw, 200px);">
-                </div>
-            </div>
-            <div class="welcome_page" id="about" style="font-family: monospace; padding-bottom: 5vh; opacity: 0; text-align: left;">
-                <div style="text-align: left;">
-                    <h6 style="margin: 0; color: green;">MY SKILLSET</h6>
-                    <h1 style="margin-top: 0; font-size: min(5vw, 35px)">Coding Languages<a style="color: green;">.</a></h1>
-                </div>  
-                <p>
-                    While trained as an Aerospace Engineer, I have a rather extensive computer science background.
-                    I've worked on projects using all of the following.
-                </p>
-                <div style="text-align: center; align-items: center; justify-content: center;">
-                    <img src="images/logos/python.png" class="skill_icon">
-                    <img src="images/logos/Javascript.png" class="skill_icon">
-                    <img src="images/logos/c.png" class="skill_icon">
-                    <img src="images/logos/Java.png" class="skill_icon">
-                    <img src="images/logos/MATLAB.png" class="skill_icon">
-                    <img src="images/logos/KiCAD.png" class="skill_icon">
-                    <img src="images/logos/bash.png" class="skill_icon">
-                    <img src="images/logos/arduino.png" class="skill_icon">
-                    <img src="images/logos/ros2.png" class="skill_icon">
-                </div>
-                <p>
-                    If you would like to take a look at an application of these skills, feel free to check out my
-                    <a class="link" style="color: green; font-weight: bold;" href="https://github.com/BigNoseBob" target="__blank">GitHub</a>,
-                    where you can find my personal projects, including this webserver and my API.
-                </p>
-            </div>
-
-        <div>
-        <!-- <div style="margin: 5vh auto; text-align: center; font-size: 4vw; font-family: monospace; bottom: 0; position: absolute;">
-            Created by me :)
-        </div> -->
     </body>
 </html>

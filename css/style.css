@@ -1,123 +1,157 @@
-/* Oliver Rayner
-   June 2022 */
+/* 
+Oliver Rayner
+July 2022 
+*/
 
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+/* Fonts */
+@import url("https://use.typekit.net/ljf4sxo.css");
+@import url('https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,700&family=Rock+Salt&family=Space+Mono:wght@400;700&display=swap');
 
-.center { width: 60vw; margin: 0 auto; }
-.left { width: 20vw; margin: 0 0 0 auto; padding: 3vw 1vh }
-.right { width: 20vw; margin: 0 auto 0 0; padding: 3vw 1vh }
-.center_image {
-    width: 102.5%;
-    position: relative;
-    transform: translateX(-1.25%); /*Shift it over to the left*/
-}
 body {
+
+    /* Color Palettes */
+
+    /* Old Macintosh */
+    --black-olive: #3A403Dff;
+    --ash-gray: #C0BDACff;
+    --cultured: #EEEEEEff;
+    --black-olive-2: #454B47ff;
+    --cultured-2: #ECECECff;
+    
+    /* Kurzgesagt Galaxy */
+    --persian-indigo: #2A0970ff;
+    --maximum-yellow-red: #FDBC5Aff;
+    --persian-indigo-2: #3E1380ff;
+    --russian-violet: #140B46ff;
+    --blue-pigment: #3130A8ff;
+
+    /* Salmon Pink/Gray */
+    --light-salmon-pink: #FFC8C8;
+    --salmon-pink: #FF9999;
+    --light-salmon-gray: #444F5A;
+    --salmon-gray: #3E4149;
+
+    /* Mars */
+    --mars-white: #f0e7e7;
+    --mars-brown: #451804;
+    --mars-dark-orange: #c1440e;
+    --mars-orange: #e77d11;
+    --mars-light-orange: #fda600;
+
+
+    /* Background */
+    background-color: black;
+    
+    /* Text */
+    color: white;
+
+    /* Window Sizes */
+    padding: 0;
     margin: 0;
-    background-color: #EBEBED;
+
 }
-p {
-    font-size: 2.5vw;
-}
-.full_screen {
+
+body h1 {
+    font-family: 'Piazzolla', serif;
+    font-weight: 700;
+    font-size: 8vw;
     margin: 0;
+}
+
+body h5 {
+    font-family: 'Rock Salt', cursive;
+    font-size: 1.5vw;
+    margin: 0;
+}
+
+body p {
+    font-family: 'space-mono', mono;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body .highlight_number {
+    font-family: 'Rock Salt', cursive;
+    color: yellow;
+}
+
+body .navbar {
+    width: 10vw;
+    height: 100vh;
+    border-right: 2px solid white;
+    background-color: inherit;
+}
+
+body .title_page {
+
+    margin: auto;
+    padding: 0;
+    display: flex;
     width: 100vw;
     height: 100vh;
+
 }
-.full_image_mac {
-    background: url("/images/imageedit_1_9390797160.png") no-repeat center center; 
-    /* -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; */
+
+body .title_page .image_self {
+    margin: auto 0;
     color: inherit;
-    background-size: auto 100vh;
-    margin: auto;
+    background: url('/images/Design.jpeg') no-repeat center center;
+    background-size: 45vh;
+    height: 100vh;
+    width: 30vw;
+    float: left;
 }
-.full_image_self {
-    background: url("/images/png-transparent-stick-man-stick-figure-happy-stick-man-photography-smiley-desktop-wallpaper-thumbnail.png") no-repeat center center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+
+body .title_page .title_container {
+    width: 70vw;
+    float: right;
+    margin: 0 1vw;
+    border-left: 2px solid white;
 }
-.terminal {
+
+body .title_page .title_container .title_background_text {
+    font-size: 12.5vw;
+    color: var(--black-olive);
+    opacity: 0.5;
+    font-family: 'space-mono';
+    font-weight: 700;
+    line-height: 0.8;
+    position: fixed;
+    bottom: 5%;
+    left: 2%;
+}
+
+body .title_page .title_container .title_body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 20vh;
-    /* Should make width adjust depending on iPhone vs. Computer/Other */
-    width: 60vw;
-    margin: auto;
-    position: absolute;
-    top: 41.0%;
-    left: 50.0%;
-    transform: translateY(-50%) translateX(-50%);
-
-    font-family: monospace;
-    color: limegreen;
-    font-size: min(5vw, 30px);
-}
-.terminal_input {
-    border: none;
-    border-color: transparent;
-    resize: none;
-    outline: none;
-    font-family: inherit;
-    background: transparent;
-    color: inherit;
-    font-size: inherit;
-    text-align: center;
-}
-.vignette {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 0 25px rgba(102, 99, 99, 0.5) inset;
-  }
-.welcome_page {
-    text-align: center;
-    margin: 5vh auto;
-    font-family: 'Josefin Sans', sans-serif;
-    width: 80vw;
-    max-width: 600px;
-    font-size: min(4.5vw, 30px);
-    float: center;
-}
-.welcome_page p {
-    font-size: min(3vw, 20px); 
-}
-.welcome_page .about {
-    font-size: min(3vw, 20px);
-}
-.welcome_page h1 {
-
-}
-.welcome_page h6 {
-
-}
-.welcome_page h4 {
-
-}
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 10vw;
-    height: auto;
-}
-.skill_icon {
-    width: min(5vw, 50px);
-    height: auto;
-}
-.link {
-    text-decoration: none; 
-    color: inherit;
+    margin: 2vh 2vw;
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+body .title_page .title_container .title_body .title_body_section {
+    font-size: 2vw;
+    font-family: 'space-mono', mono;
+    color: var(--mars-white);
+    width: 50%;
+    margin: 0vh 2vw;
+}
+
+body .title_page .title_container .title_body .title_body_section .highlight {
+    font-family: 'Rock Salt', cursive;
+    color: var(--mars-light-orange);
+    font-size: 1.5vw;
+}
+
+body .title_page .title_banner {
+    color: var(--mars-white);
+
+    padding: 4vh 2vw;
+    font-size: 6vw;
+
+    font-family: 'Rock Salt';
+    font-size: 100%;
+}
+
+body .solar_system {
+    background-image: url('/images/space.gif');
+    background-repeat: repeat;
+    background-size: cover;
 }
