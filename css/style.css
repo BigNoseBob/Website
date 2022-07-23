@@ -133,6 +133,9 @@ body .title_page .title_container .title_background_text {
 body .title_page .title_container .title_body {
     display: flex;
     margin: 2vh 2vw;
+
+    opacity: 0;
+    animation: fadeIn 2s forwards;
 }
 
 body .title_page .title_container .title_body .title_body_section {
@@ -148,6 +151,14 @@ body .title_page .title_container .title_body .title_body_section .highlight {
     font-family: 'Rock Salt', cursive;
     color: var(--mars-light-orange);
     font-size: min(1.5vw, 1.5vh);
+    line-height: 1;
+}
+
+body .title_page .title_container .title_body .title_body_section .sticky_note {
+
+    /* background-color: var(--light-salmon-gray);
+    border-radius: 15px; */
+
 }
 
 body .title_page .title_banner {
@@ -164,4 +175,9 @@ body .solar_system {
     background-image: url('/images/space.gif');
     background-repeat: repeat;
     background-size: cover;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
