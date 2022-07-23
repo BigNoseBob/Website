@@ -54,13 +54,13 @@ body {
 body h1 {
     font-family: 'Piazzolla', serif;
     font-weight: 700;
-    font-size: 8vw;
+    font-size: min(8vw, 8vh);
     margin: 0;
 }
 
 body h5 {
     font-family: 'Rock Salt', cursive;
-    font-size: 1.5vw;
+    font-size: min(1.5vw, 1.5vh);
     margin: 0;
 }
 
@@ -80,6 +80,14 @@ body .navbar {
     height: 100vh;
     border-right: 2px solid white;
     background-color: inherit;
+    padding: 0 0;
+}
+
+body .navbar .icon {
+    width: 50%;
+    margin: auto;
+    display: block;
+    padding: 1vh 0;
 }
 
 body .title_page {
@@ -105,20 +113,21 @@ body .title_page .image_self {
 body .title_page .title_container {
     width: 70vw;
     float: right;
-    margin: 0 1vw;
+    margin: 0 0;
     border-left: 2px solid white;
 }
 
 body .title_page .title_container .title_background_text {
-    font-size: 12.5vw;
+    /* font-size: min(12.5vw, 12.5vh); */
+    font-size: min(8.5vh, 8.5vw);
     color: var(--black-olive);
-    opacity: 0.5;
+    opacity: 0.25;
     font-family: 'space-mono';
     font-weight: 700;
     line-height: 0.8;
     position: fixed;
-    bottom: 5%;
-    left: 2%;
+    top: 2%;
+    right: 2%;
 }
 
 body .title_page .title_container .title_body {
@@ -127,24 +136,25 @@ body .title_page .title_container .title_body {
 }
 
 body .title_page .title_container .title_body .title_body_section {
-    font-size: 2vw;
+    font-size: min(2vw, 2vh);
     font-family: 'space-mono', mono;
     color: var(--mars-white);
     width: 50%;
     margin: 0vh 2vw;
+    text-align: left;
 }
 
 body .title_page .title_container .title_body .title_body_section .highlight {
     font-family: 'Rock Salt', cursive;
     color: var(--mars-light-orange);
-    font-size: 1.5vw;
+    font-size: min(1.5vw, 1.5vh);
 }
 
 body .title_page .title_banner {
     color: var(--mars-white);
 
     padding: 4vh 2vw;
-    font-size: 6vw;
+    font-size: min(6vw, 6vh);
 
     font-family: 'Rock Salt';
     font-size: 100%;
