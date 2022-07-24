@@ -95,6 +95,10 @@ async function main() {
             url = '/index.html'
             if (IPS) get_location(req)
         }
+        if (url === '/pj') {
+            url = '/ok.html'
+        }
+
         res.writeHead(200, {
             "Content-Type": extension
         })
