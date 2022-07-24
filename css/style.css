@@ -253,10 +253,9 @@ body .title_page .image_self {
 }
 
 body .title_page .title_container {
-    width: 58vw;
-    float: right;
+    width: 60vw;
     margin: 0 0;
-    left: calc(10vw + min(100vh * 0.419, 30vw) + 2vw);
+    left: calc(10vw + min(100vh * 0.419, 30vw));
     position: absolute;
 }
 
@@ -368,7 +367,7 @@ body .title_page .title_container .title_body .title_body_section .sticky_note_d
 body .title_page .title_banner {
     color: var(--mars-white);
 
-    padding: 4vh 2vw;
+    padding: 4vh 4vw;
     font-size: min(6vw, 6vh);
 
     font-family: 'Rock Salt';
