@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /ssl
+Disallow: /API
