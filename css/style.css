@@ -381,7 +381,7 @@ body .solar_system {
     100% { opacity: 1; }
 }
 
-@media only screen and (max-width: 844px) and (orientation: portrait) {
+@media screen and (max-width: 845px) {
     .title_body {
         flex-direction: column;
     }
@@ -390,7 +390,7 @@ body .solar_system {
         margin: 0 auto;
     }
 }
-@media (min-width: 850px) {
+@media screen and (min-width: 846px) {
     .title_body_section {
         width: 50%;
         margin: 0 2vw;
