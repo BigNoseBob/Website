@@ -1,121 +1,54 @@
 /* Oliver Rayner
    June 2022 */
 
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
-
-.center { width: 60vw; margin: 0 auto; }
-.left { width: 20vw; margin: 0 0 0 auto; padding: 3vw 1vh }
-.right { width: 20vw; margin: 0 auto 0 0; padding: 3vw 1vh }
-.center_image {
-    width: 102.5%;
-    position: relative;
-    transform: translateX(-1.25%); /*Shift it over to the left*/
-}
-body {
-    margin: 0;
-    background-color: #EBEBED;
-}
-p {
-    font-size: 2.5vw;
-}
-.full_screen {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-}
-.full_image_mac {
-    background: url("/images/landscape\,-transparent-bg-+-shadow-designify.png") no-repeat center center; 
-    color: inherit;
-    background-size: auto 75vh;
-    margin: auto;
-}
-.full_image_self {
-    background: url("/images/png-transparent-stick-man-stick-figure-happy-stick-man-photography-smiley-desktop-wallpaper-thumbnail.png") no-repeat center center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.terminal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 20vh;
-    /* Should make width adjust depending on iPhone vs. Computer/Other */
-    width: 60vw;
-    margin: auto;
-    position: absolute;
-    top: 41.0%;
-    left: 50.0%;
-    transform: translateY(-50%) translateX(-50%);
-
-    font-family: monospace;
-    color: limegreen;
-    font-size: min(5vw, 30px);
-}
-.terminal_input {
-    border: none;
-    border-color: transparent;
-    resize: none;
-    outline: none;
-    font-family: inherit;
-    background: transparent;
-    color: inherit;
-    font-size: inherit;
-    text-align: center;
-}
-.vignette {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 0 25px rgba(102, 99, 99, 0.5) inset;
-  }
-.welcome_page {
-    text-align: center;
-    margin: 5vh auto;
-    font-family: 'Josefin Sans', sans-serif;
-    width: 80vw;
-    max-width: 600px;
-    font-size: min(4.5vw, 30px);
-    float: center;
-}
-.welcome_page p {
-    font-size: min(3vw, 20px);
-    color: #3B403C;
-    background-color: #BFBBA8;
-}
-.welcome_page .about {
-    font-size: min(3vw, 20px);
-}
-.welcome_page h1 {
-
-}
-.welcome_page h6 {
-
-}
-.welcome_page h4 {
-
-}
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 10vw;
-    height: auto;
-}
-.skill_icon {
-    width: min(5vw, 50px);
-    height: auto;
-}
-.link {
-    text-decoration: none; 
-    color: inherit;
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
+   .main { width: 600px; margin: 0 auto; }
+   .left { width: 200px; margin: 0 0 0 auto; padding-top: 20px; padding-bottom: 20px; }
+   .right { width: 200px; margin: 0 auto 0 0; padding-top: 20px; padding-bottom: 20px; }
+   .center_image {
+       width: 102.5%;
+       position: relative;
+       transform: translateX(-1.25%); /*Shift it over to the left*/
+   }
+   .navbar_old {
+       text-align: center; position: -webkit-sticky; position: sticky; top: 0; border-bottom: gray solid 2px; background-color: white; 
+       padding-top: 5px; padding-bottom: 5px;
+   }
+   .navbar {
+       text-align: right; 
+       margin: 0 20px 0 0; 
+       padding-right: 5px; 
+       font-family: monospace; 
+       border-right: 2px black solid; 
+       font-size: large; 
+       opacity: 0; 
+       position: sticky;
+       top: 45px;
+   }
+   .navlink { 
+       text-decoration: none; 
+       color: inherit;
+       font-weight: bold;
+       /* display: inline-block; */
+   }
+   a.navlink:hover {
+       /* font-weight: bold; */
+       color: #1E90FF;
+   }
+   .input {
+       border: none;
+       border-color: transparent;
+       resize: none;
+       outline: none;
+       font-family: monospace;
+       animation: 1s blink_cursor step-end infinite;
+       /* caret-color: transparent; */
+   }
+   .fade-in {
+       animation: fadeIn 2s forwards;
+   }
+   @keyframes fadeIn {
+       0% { opacity: 0; }
+       100% { opacity: 1; }
+   }
+   
+   
