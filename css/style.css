@@ -267,7 +267,7 @@ body .title_page .title_container .title_background_text {
 }
 
 body .title_page .title_container .title_body {
-    display: flex;
+    display: inline-flex;
     margin: 2vh 2vw;
 
     opacity: 0;
@@ -278,8 +278,7 @@ body .title_page .title_container .title_body .title_body_section {
     font-size: min(2vw, 2vh);
     font-family: 'space-mono', mono;
     color: var(--mars-white);
-    width: 50%;
-    margin: 0vh 2vw;
+
     text-align: left;
 }
 
@@ -380,4 +379,20 @@ body .solar_system {
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
+}
+
+@media (max-width: 799px) {
+    .title_body {
+        flex-direction: column;
+    }
+    .title_body_section {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 800px) {
+    .title_body_section {
+        width: 50%;
+        margin: 0 2vw;
+    }
 }
