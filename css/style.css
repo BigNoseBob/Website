@@ -381,7 +381,7 @@ body .solar_system {
     100% { opacity: 1; }
 }
 
-@media (max-width: 849px) {
+@media only screen and (max-width: 844px) and (orientation: portrait) {
     .title_body {
         flex-direction: column;
     }
