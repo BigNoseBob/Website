@@ -4,7 +4,19 @@
 <!DOCTYPE html>
 
 <style src="css/style.css"></style>
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+    window.onload = () => {
+        $(document).on('mousemove', function(e){
+            $('#cursor').offset({left: e.pageX, top: e.pageY});
+        });
 
+        const tooltip = document.getElementById('tooltip')
+        $(document).on('mousemove', function(e){
+            $('#tooltip').offset({left: e.pageX - tooltip.offsetHeight/8, top: e.pageY - tooltip.offsetHeight/2});
+        });
+    }
+</script>
 <html>
 <header>
     <meta charset="UTF-8">
@@ -15,11 +27,16 @@
 </header>
     <body>
         <div class="title_page">
+            <div id="cursor" class="dot"></div>
+            <div id="tooltip" class="tooltip"></div>
             <div class="navbar">
                 <!-- <img src="/images/logos/bmc_icon_black-2.png" style="width: 50%"> -->
                 <!-- <img src="/images/logos/LInkedIn.png" class="icon" style="padding-top: 5vh;">
                 <img src="/images/logos/instagram.png" class="icon" style="width:55%;">
                 <img src="/images/logos/output-onlinepngtools.png" class="icon"> -->
+            </div>
+            <div class="personal_note">
+                Built from scratch by me .)
             </div>
             <div class="image_self"></div>
             <div class="title_container">
@@ -33,7 +50,7 @@
                         <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
                         I'm an MIT student studying Aerospace Engineering and EECS (Electrical Engineering and Computer Science).
                         <br><br>
-                        I have an extensive CS background. You can check out some of my projects <a href="https://github.com/BigNoseBob" target="__blank" style="text-decoration: none; color: var(--mars-dark-orange);">here</a>.
+                        I have an extensive CS background. Come check out some of my <a class="link" href="https://github.com/BigNoseBob" target="__blank">projects</a>.
                         <br><br>
                         I like space.<br>
                         I like toying around with APIs.<br>
@@ -48,7 +65,7 @@
                             <div class="sticky_note_date_dark">DATE<br><a class="highlight">01/22</a></div>
                         </div>
                         <br>
-                        I have nearly <a class="highlight" style="color: var(--mars-light-orange);">5</a> years of research experience.
+                        I have nearly <a class="highlight" style="color: var(--mars-light-orange);">5</a> years of <a class="link" target="__blank" href="http://spl.mit.edu">research experience</a>.
                     </div>
                     <div class="title_body_section" style="float: right;">
                         <!-- Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Ut porttitor leo a diam sollicitudin tempor id. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
@@ -66,7 +83,7 @@
                         In my free time I'm either climbing, running, or working on another project. Most recently, I've been working on
                         my discord bot <a class="highlight" style="color: var(--mars-light-orange);">GORT</a>.
                         <br><br>
-                        You can check out the project <a href="/gort.html" target="__blank" style="text-decoration: none; color: var(--mars-dark-orange);">here</a>.
+                        You can check out the project <a class="link" href="/gort.html" target="__blank">here</a>.
                     </div>
                 </div>
                 <div class="title_body_bottom"></div>

@@ -48,6 +48,29 @@ body {
     padding: 0;
     margin: 0;
 
+    /* Cursor */
+    cursor: none;
+
+}
+
+.dot {
+    border-radius: 50%;
+    width: 7px;
+    height: 7px;
+    background-color: var(--mars-white);
+    display: inline-block;
+    z-index: 5;
+}
+
+.tooltip {
+    visibility: hidden;
+    border-radius: min(2.5vw, 2.5vh);
+    height: min(5vh, 5vw);
+    width: min(20vh, 20vw);
+    background-color: black;
+    z-index: 4;
+    position: absolute;
+
 }
 
 body h1 {
@@ -73,9 +96,27 @@ body p {
     font-style: normal;
 }
 
+body .personal_note {
+    position: absolute;
+    bottom: 1vw;
+    right: 1vw;
+
+    font-family: 'space-mono', mono;
+    font-size: min(1.5vw, 1.5vh);
+    color: var(--light-salmon-gray);
+    opacity: 0.8;
+}
+
 body .highlight_number {
     font-family: 'Rock Salt', cursive;
     color: yellow;
+}
+
+body .link {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--mars-light-orange);
+    color: inherit;
 }
 
 body .navbar {
