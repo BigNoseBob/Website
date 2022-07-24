@@ -59,7 +59,7 @@ body {
     height: 7px;
     background-color: var(--mars-white);
     display: inline-block;
-    z-index: 5;
+    /* z-index: 5; */
 }
 
 .tooltip {
