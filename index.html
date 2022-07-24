@@ -4,19 +4,7 @@
 <!DOCTYPE html>
 
 <style src="css/style.css"></style>
-<script src="jquery-3.6.0.min.js"></script>
-<script>
-    window.onload = () => {
-        $(document).on('mousemove', function(e){
-            $('#cursor').offset({left: e.pageX, top: e.pageY});
-        });
 
-        // const tooltip = document.getElementById('tooltip')
-        // $(document).on('mousemove', function(e){
-        //     $('#tooltip').offset({left: e.pageX - tooltip.offsetHeight/8, top: e.pageY - tooltip.offsetHeight/2});
-        // });
-    }
-</script>
 <html>
 <header>
     <meta charset="UTF-8">
@@ -27,14 +15,9 @@
 </header>
     <body>
         <div class="title_page">
-            <div id="cursor" class="dot"></div>
+            <!-- <div id="cursor" class="dot"></div> -->
             <!-- <div id="tooltip" class="tooltip"></div> -->
-            <div class="navbar">
-                <!-- <img src="/images/logos/bmc_icon_black-2.png" style="width: 50%"> -->
-                <!-- <img src="/images/logos/LInkedIn.png" class="icon" style="padding-top: 5vh;">
-                <img src="/images/logos/instagram.png" class="icon" style="width:55%;">
-                <img src="/images/logos/output-onlinepngtools.png" class="icon"> -->
-            </div>
+            <div class="navbar"></div>
             <div class="personal_note">
                 Built from scratch by me .)
                 <a href="https://www.linkedin.com/in/oliver-rayner-035717217/" target="__blank"><img src="/images/logos/LInkedIn_bw.png" style="width: 2%; transform: translateY(25%);"></a>
