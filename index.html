@@ -11,10 +11,10 @@
             $('#cursor').offset({left: e.pageX, top: e.pageY});
         });
 
-        const tooltip = document.getElementById('tooltip')
-        $(document).on('mousemove', function(e){
-            $('#tooltip').offset({left: e.pageX - tooltip.offsetHeight/8, top: e.pageY - tooltip.offsetHeight/2});
-        });
+        // const tooltip = document.getElementById('tooltip')
+        // $(document).on('mousemove', function(e){
+        //     $('#tooltip').offset({left: e.pageX - tooltip.offsetHeight/8, top: e.pageY - tooltip.offsetHeight/2});
+        // });
     }
 </script>
 <html>
@@ -37,6 +37,7 @@
             </div>
             <div class="personal_note">
                 Built from scratch by me .)
+                <a href="https://www.linkedin.com/in/oliver-rayner-035717217/" target="__blank"><img src="/images/logos/LInkedIn_bw.png" style="width: 2%; transform: translateY(25%);"></a>
             </div>
             <div class="image_self"></div>
             <div class="title_container">
@@ -50,7 +51,14 @@
                         <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
                         I'm an MIT student studying Aerospace Engineering and EECS (Electrical Engineering and Computer Science).
                         <br><br>
-                        I have an extensive CS background. Come check out some of my <a class="link" href="https://github.com/BigNoseBob" target="__blank">projects</a>.
+                        I have an extensive CS background. Come check out some of my 
+                        <div class="tooltip">
+                            <a class="link" href="https://github.com/BigNoseBob" target="__blank">projects</a>.
+                            <div class="right">
+                                <div class="text-content">https://github.com/BigNoseBob</div>
+                                <i></i>
+                            </div>
+                        </div>
                         <br><br>
                         I like space.<br>
                         I like toying around with APIs.<br>
@@ -59,13 +67,27 @@
                         <div class="sticky_note_dark">
                             <div class="sticky_note_heading_dark">RECENT AWARDS<br><span class="highlight">MIT MASLAB</span></div>
                             <div class="sticky_note_body_dark">
-                                I competed in MIT's Mobile Autonomous Systems competition. Through the use of
-                                PID position control and a modified A* pathfinding algorithm, our team won <a class="highlight">1st</a> place.
+                                I competed in MIT's 
+                                <div class="tooltip">
+                                    <a class="link" href="http://maslab.mit.edu/2022/" target="__blank">Mobile Autonomous Systems</a>
+                                    <div class="right">
+                                        <div class="text-content">http://maslab.mit.edu/2022/</div>
+                                        <i></i>
+                                    </div>
+                                </div> competition.
+                                Through the use of PID position control and a modified A* pathfinding algorithm, our team won <a class="highlight">1st</a> place.
                             </div>
                             <div class="sticky_note_date_dark">DATE<br><a class="highlight">01/22</a></div>
                         </div>
                         <br>
-                        I have nearly <a class="highlight" style="color: var(--mars-light-orange);">5</a> years of <a class="link" target="__blank" href="http://spl.mit.edu">research experience</a>.
+                        I have nearly <a class="highlight" style="color: var(--mars-light-orange);">5</a> years of 
+                        <div class="tooltip">
+                            <a class="link" href="https://spl.mit.edu" target="__blank">research</a>
+                            <div class="right">
+                                <div class="text-content">http://spl.mit.edu</div>
+                                <i></i>
+                            </div>
+                        </div> experience.
                     </div>
                     <div class="title_body_section" style="float: right;">
                         <!-- Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Ut porttitor leo a diam sollicitudin tempor id. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
@@ -74,7 +96,15 @@
                         <div class="sticky_note">
                             <div class="sticky_note_heading">OCCUPATION<br><span class="highlight">PSS / PFS</span></div>
                             <div class="sticky_note_body">
-                                At PSS/PFS (Princeton Satellite/Fusion Systems) I work on power electronics as applied to fusion propulsion
+                                At
+                                <div class="tooltip">
+                                    <a class="link" href="https://www.psatellite.com" target="__blank">PSS/PFS</a>
+                                    <div class="left">
+                                        <div class="text-content">https://www.psatellite.com</div>
+                                        <i></i>
+                                    </div>
+                                </div>
+                                 (Princeton Satellite/Fusion Systems) I work on power electronics as applied to fusion propulsion
                                 and fusion power production.
                             </div>
                             <div class="sticky_note_date">SINCE<br><a class="highlight">06/22</a></div>
@@ -83,8 +113,18 @@
                         In my free time I'm either climbing, running, or working on another project. Most recently, I've been working on
                         my discord bot <a class="highlight" style="color: var(--mars-light-orange);">GORT</a>.
                         <br><br>
-                        You can check out the project <a class="link" href="/gort.html" target="__blank">here</a>.
+                        You can check out the project 
+                        <div class="tooltip">
+                            <a class="link" href="/gort.html" target="__blank">here</a>.
+                            <div class="left">
+                                <div class="text-content">https://oliverr.dev/gort</div>
+                                <i></i>
+                            </div>
+                        </div>
                     </div>
+                    <!-- <div style="position: absolute; bottom: 4vh; right: 2vh; text-align: right;">
+                        <img src="/images/logos/LInkedIn_bw.png" style="width: 5%;">
+                    </div> -->
                 </div>
                 <div class="title_body_bottom"></div>
             </div>
