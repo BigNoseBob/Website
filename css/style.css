@@ -381,7 +381,7 @@ body .solar_system {
     100% { opacity: 1; }
 }
 
-@media (max-width: 799px) {
+@media (max-width: 849px) {
     .title_body {
         flex-direction: column;
     }
@@ -390,7 +390,7 @@ body .solar_system {
         margin: 0 auto;
     }
 }
-@media (min-width: 800px) {
+@media (min-width: 850px) {
     .title_body_section {
         width: 50%;
         margin: 0 2vw;
