@@ -37,7 +37,7 @@ function response_template({ status, code, data, message }) {
     message = message || null
     code = code || 200
 
-    return { status: status, message: message, data: data }
+    return { status: status, code: code, message: message, data: data }
 
 }
 
@@ -48,7 +48,8 @@ async function initialize() {
     async function API_call(req, res) {
 
         let url = req.url, data, headers = req.headers;
-        const endpoint = endpoints.get(API_ENDPOINTS[req.url])
+
+        const endpoint = endpoints.get(API_ENDPOINTS[req.url.split('?')[0]])
     
         if(!endpoint) {
 
@@ -76,8 +77,9 @@ async function initialize() {
             return
     
         } else {
-
-            if (!(gort_api_keys.includes(headers["authorization"])) && url != '/') {
+            // It's an API call
+            
+            if (!(gort_api_keys.includes(headers["authorization"])) && (url != '/' && endpoint.data?.name != 'spotify_link' )) {
                 res.writeHead(400, {
                     "Content-Type": "text/json"
                 })
@@ -89,7 +91,7 @@ async function initialize() {
             res.writeHead(200, {
                 "Content-Type": 'text/json'
             })
-            let response_obj = await endpoint.execute({ client })
+            let response_obj = await endpoint.execute({ client, url })
             data = response_template({ status: "success", code: 200, data: response_obj })
     
         }
