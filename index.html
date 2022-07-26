@@ -1,90 +1,123 @@
 <!-- Oliver Rayner -->
-<!-- April 2022 -->
+<!-- July 2022 -->
 
 <!DOCTYPE html>
 
 <style src="css/style.css"></style>
-<script type="module" src="js/index/main.js"></script>
 
 <html>
-
 <header>
     <meta charset="UTF-8">
-    <title>Oliver Rayner</title>  <!--This is the thingy that appears in the hotbar-->
+    <title>Oliver Rayner</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/stylesheet.css" type="text/css" charset="utf-8" />
 </header>
-
-<body style="font-size:x-large; display: flex;">
-
-    <div class="left" style="padding-top: 55px;">
-        
-        <div class="navbar" id="left">
-            <a class="navlink" href="/about.html">ABOUT</a>
-        </div>
-
-    </div>
-
-    <div id="center">
-
-        <h1 class="main" id=title style="text-align: left; font-family: monospace; padding-top: 40px;"></h1>
-
-        <div id="body" style="opacity: 0; text-align: left; font-family: monospace;">
-
-            <h4 class="main" style="margin-bottom: 0px;">This is my website.</h4>
-
-            <div style="display: flex; padding-top: 50px; margin-top: 20px; font-size: large;">
-
-                <div style="width: 600px; margin: 0 0 0 auto;">
-                    <p style="text-align: right;">
-                        <a>Come take a look at my <a class="navlink" id="nav0">projects</a></a>
-                        <br><a class="navlink" id="nav1" href="https://brrr.money">experience</a>
-                        <br><a class="navlink" id="nav2" href="https://en.wikipedia.org/wiki/Rock_climbing">hobbies</a>
-                        <br><a class="navlink" id="nav3">&nbsp;</a>
-                        <br><a class="navlink" id="nav4">&nbsp;</a>
-                    </p>
+<meta name="viewport" content="width=device-width">
+    <body>
+        <div class="title_page">
+            <!-- <div id="cursor" class="dot"></div> -->
+            <!-- <div id="tooltip" class="tooltip"></div> -->
+            <div class="image_self"></div>
+            <div class="title_container">
+                <a class="title_background_text">Oliver Rayner</a>
+                <div class="title_banner">
+                    <h5 style="margin: 0; padding-left: 0.75vw; color: gray;">Hello, my name is</h5>
+                    <h1 style="line-height: 0.6;">Oliver<a style="color: var(--mars-light-orange);">.</a></h1>
                 </div>
-
-                <div style="width: 30px; text-align: left; margin: 0 auto 0 0;"><b id="selector"></b></div>
-
+                <div class="title_body">
+                    <div class="title_body_section" style="float: left;">
+                        <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
+                        I'm an MIT student studying Aerospace Engineering and EECS (Electrical Engineering and Computer Science).
+                        <br><br>
+                        I have an extensive CS background. Come check out some of my 
+                        <div class="tooltip">
+                            <a class="link" href="https://github.com/BigNoseBob" target="__blank">projects</a>.
+                            <div class="left">
+                                <div class="text-content">https://github.com/BigNoseBob</div>
+                                <i></i>
+                            </div>
+                        </div>
+                        <br><br>
+                        I like space.<br>
+                        I like toying around with APIs.<br>
+                        I like 
+                        <div class="tooltip">
+                            <a class="link">cooking</a>
+                            <div class="left">
+                                <div class="text-content">pasta...</div>
+                                <i></i>
+                            </div>
+                        </div>.
+                        <br><br>
+                        <div class="sticky_note_dark">
+                            <div class="sticky_note_heading_dark">RECENT AWARDS<br><span class="highlight">MIT MASLAB</span></div>
+                            <div class="sticky_note_body_dark">
+                                I competed in MIT's 
+                                <div class="tooltip">
+                                    <a class="link" href="http://maslab.mit.edu/2022/" target="__blank">Mobile Autonomous Systems</a>
+                                    <div class="left">
+                                        <div class="text-content">http://maslab.mit.edu/2022/</div>
+                                        <i></i>
+                                    </div>
+                                </div> competition.
+                                Through the use of PID position control and a modified A* pathfinding algorithm, our team won <a class="highlight">1st</a> place.
+                            </div>
+                            <div class="sticky_note_date_dark">DATE<br><a class="highlight">01/22</a></div>
+                        </div>
+                        <br>
+                        I have nearly <a class="highlight" style="color: var(--mars-light-orange);">5</a> years of 
+                        <div class="tooltip">
+                            <a class="link" href="https://spl.mit.edu" target="__blank">research</a>
+                            <div class="left">
+                                <div class="text-content">http://spl.mit.edu</div>
+                                <i></i>
+                            </div>
+                        </div> experience.
+                        <br><br>
+                    </div>
+                    <div class="title_body_section" style="float: right;">
+                        <!-- Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Ut porttitor leo a diam sollicitudin tempor id. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
+                        I'm a <strike style="color: var(--mars-dark-orange); text-decoration-thickness: min(0.5vw, 0.5vh);"><span style="color: var(--mars-white);">division 1 rower</span></strike> climber.
+                        <br><br>
+                        <div class="sticky_note">
+                            <div class="sticky_note_heading">OCCUPATION<br><span class="highlight">PSS / PFS</span></div>
+                            <div class="sticky_note_body">
+                                At
+                                <div class="tooltip">
+                                    <a class="link" href="https://www.psatellite.com" target="__blank">PSS/PFS</a>
+                                    <div class="left">
+                                        <div class="text-content">https://www.psatellite.com</div>
+                                        <i></i>
+                                    </div>
+                                </div>
+                                 (Princeton Satellite/Fusion Systems) I work on power electronics as applied to fusion propulsion
+                                and fusion power production.
+                            </div>
+                            <div class="sticky_note_date">SINCE<br><a class="highlight">06/22</a></div>
+                        </div>
+                        <br>
+                        In my free time I'm either climbing, running, or working on another project. Most recently, I've been working on
+                        my discord bot <a class="highlight" style="color: var(--mars-light-orange);">GORT</a>.
+                        <br><br>
+                        You can check out the project 
+                        <div class="tooltip">
+                            <a class="link" href="/gort.html" target="__blank">here</a>.
+                            <div class="left">
+                                <div class="text-content">https://oliverr.dev/gort</div>
+                                <i></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div style="position: absolute; bottom: 4vh; right: 2vh; text-align: right;">
+                        <img src="/images/logos/LInkedIn_bw.png" style="width: 5%;">
+                    </div> -->
+                </div>
+                <div class="personal_note">
+                    Built from scratch by me .)
+                    <a href="https://www.linkedin.com/in/oliver-rayner-035717217/" target="__blank"><img src="/images/logos/LInkedIn_bw.png" style="width: 2%; transform: translateY(25%);"></a>
+                </div>
             </div>
-
-            <div class="main" id="cli" style="text-align: left; font-family: monospace; opacity: 1; padding-top: 100px;">
-                
-                <b>>></b> <input class="input" id="cli_input" size="50" style="font-size: large;" type="text" autofocus>
-
-            </div>
-
         </div>
-
-        <div style="text-align: center; font-family: monospace; font-size: medium; position: fixed; bottom: 0; width: 600px; background-color: white;">
-
-            <p>
-                Oliver Rayner 2022
-                <br>oliverr@mit.edu / +1 (914) 708 8835 / oliver.e.rayner@gmail.com
-            </p>
-
-        </div>
-
-    </div>
-
-    <div class="right" style="padding-top: 55px;">
-        <div id="social" style="position: sticky; top: 45px;">
-            <div id="buymeacoffee" style="text-align: left; margin: 0 0 0 20px; padding-left: 5px; font-family: monospace; font-size: large; opacity: 0; display: flex;">
-                <a href="https://www.buymeacoffee.com/oliverr" target="_blank">
-                    <img src="images/bmc_icon_black.png" alt="buymeacoffee logo" style="width: 20px; height: auto; float: left; position: relative; transform: translateY(-20%)">
-                    <a style="padding-left: 7px" href="https://www.buymeacoffee.com/oliverr" target="blank" class="navlink">Spot me one?</a>
-                </a>
-            </div>
-            <div id="linkedin" style="text-align: left; margin: 0 0 0 20px; padding-left: 5px; padding-top: 5px; font-family: monospace; font-size: large; opacity: 0; position: sticky; top: 45px; display: flex;">
-                <a href="https://www.linkedin.com/in/oliver-rayner-035717217/" target="_blank">
-                    <img src="images/LinkedIn_logo_initials.png" alt="LinkedIn Logo" style="width: 20px; height: auto; float: left; position: relative; transform: translateY(-10%)">
-                    <a style="padding-left: 7px" href="https://www.linkedin.com/in/oliver-rayner-035717217/" target="blank" class="navlink">Connect?</a>
-                </a>
-            </div>
-        </div>
-    </div>
-    
-</body>
-
+    </body>
 </html>

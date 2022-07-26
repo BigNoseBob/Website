@@ -63,9 +63,16 @@ async function main() {
     const IPS = process.argv.includes('-i')
     const REQ = process.argv.includes('-r')
 
+    const API = process.argv.includes('-a')
+
     // Initialize API
-    const api_call = await initialize()
-    console.log('API running.')
+    let api_call;
+    if (API) {
+        api_call = await initialize()
+        console.log('API running.')
+    } else {
+        console.log('[\x1b[31mWARN\x1b[0m] API disabled. Run the server with [-a] flag to enable.')
+    }
 
     let server = https.createServer(options, async (req, res) => {
 
@@ -88,6 +95,10 @@ async function main() {
             url = '/index.html'
             if (IPS) get_location(req)
         }
+        if (url === '/pj') {
+            url = '/ok.html'
+        }
+
         res.writeHead(200, {
             "Content-Type": extension
         })
