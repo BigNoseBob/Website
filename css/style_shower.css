@@ -1,0 +1,129 @@
+/* 
+Oliver Rayner
+July 2022 
+*/
+
+/* Fonts */
+@import url("https://use.typekit.net/ljf4sxo.css");
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Piazzolla:opsz,wght@8..30,700&family=Redacted+Script&family=Roboto+Condensed&family=Rock+Salt&family=Space+Mono:wght@400;700&display=swap');
+
+body {
+
+    /* Color Palette */
+    --dark-blue: #0078AA;
+    --light-blue: #3AB4F2;
+    --electric-yellow: #F2DF3A;
+    --off-white: #F6F6F6;
+
+    --umbrella-red: #c53440;
+    --umbrella-orange: #e28b51;
+    --umbrella-yellow: #cbbc6b;
+    --umbrella-blue: #97bebf;
+    --umbrella-purple: #a77393;
+
+    /* --triadic-blue: #2A5084;
+    --triadic-gray: #4C5F76;
+    --triadic-yellow: #F7A851;
+    --triadic-orange: #F46A03;
+    --triadic-green: #697217; */
+    
+    --triadic-teal: #047E8A;
+    --triadic-blue: #011F3C;
+    --triadic-clay: #A45F59;
+    --triadic-orange: #A83F22;
+    --triadic-green: #517461;
+
+    /* Background */
+    background-color: var(--off-white);
+    
+    /* Text */
+    color:  #181817;
+
+    /* Window Sizes */
+    padding: 0;
+    margin: 0;
+
+}
+
+body h1 {
+    font-family: 'Marck Script', cursive;
+    font-weight: 700;
+    font-size: min(8vw, 8vh);
+    margin: 0;
+}
+
+body h4 {
+    font-family: 'Rock Salt', cursive;
+    font-size: min(2vw, 2vh);
+    margin: 0;
+}
+
+body h5 {
+    font-family: 'Rock Salt', cursive;
+    font-size: min(1.5vw, 1.5vh);
+    margin: 0;
+}
+
+body p {
+    font-family: 'space-mono', mono;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.background {
+    position: absolute;
+    top: 20vh;
+    width: 100vw;
+    height: 50vh;
+    background: url('/images/HandLuggageOnly-7-1.jpg') no-repeat center center;
+    background-size: 100% auto;
+    border: 2px solid gray;
+}
+
+.fullscreen {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.title {
+    text-align: center;
+    margin: 0 29vw;
+    /* border-bottom: 2px solid var(--off-white); */
+}
+
+.main_container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.content_left {
+    width: 50%;
+    height: auto;
+    float: left;
+    margin: 0;
+    background-color: var(--triadic-green);
+    border-right: 2px solid white;
+}
+
+.content_center {
+    width: 20%;
+    height: auto;
+    /* border: 2px solid black; */
+    border-right: 10px solid var(--triadic-teal);
+    border-left: 10px solid var(--triadic-teal);
+    margin: 0;
+
+    /* background: url('/images/istockphoto-471207531-612x612.jpg') no-repeat center center;
+    background-size: 100% auto; */
+}
+
+.content_right {
+    width: 30%;
+    height: auto;
+    float: right;
+    margin: 0;
+    background-color: var(--triadic-clay);
+    border-left: 2px solid white;
+}

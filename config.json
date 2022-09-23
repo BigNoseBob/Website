@@ -1,0 +1,22 @@
+{
+    "endpoints": {
+        "/":                "/index.html",
+        "/pj":              "/ok.html",
+        "/showerthoughts":  "/showerthoughts.html",
+        "/thoughts":        "/showerthoughts.html",
+        "/blog":            "/blog.html" 
+    },
+    "hostnames": {
+        "localhost": "",
+        "api": "api",
+        "blog": "blog",
+        "climbing": "blog"
+    },
+    "blacklist": [
+        "/ssl/privkey.pem",
+        "/ssl/fullchain.pem",
+        "/.env",
+        "/config.json",
+        "/https_server.js"
+    ]
+}

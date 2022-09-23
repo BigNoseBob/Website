@@ -1,0 +1,130 @@
+/* 
+Oliver Rayner
+July 2022 
+*/
+
+/* Fonts */
+@import url("https://use.typekit.net/ljf4sxo.css");
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Piazzolla:opsz,wght@8..30,700&family=Redacted+Script&family=Roboto+Condensed&family=Rock+Salt&family=Space+Mono:wght@400;700&display=swap');
+
+body {
+
+    /* Color Palette */
+    --light-orange: #D3742A;
+    --dark-orange: #D26317;
+    --maroon: #AC554F;
+    --blue: #5C6D7F;
+    --brown: #644E17;
+
+    /* Background */
+    background-color: #181817;
+    
+    /* Text */
+    color:  white;
+    font-family: 'space-mono', mono;
+
+    /* Window Sizes */
+    padding: 0;
+    margin: 0;
+
+}
+
+body h1 {
+    font-family: 'Marck Script', cursive;
+    font-weight: 700;
+    font-size: min(8vw, 8vh);
+    margin: 0;
+}
+
+body h4 {
+    font-family: 'Rock Salt', cursive;
+    font-size: min(2vw, 2vh);
+    margin: 0;
+}
+
+body h5 {
+    font-family: 'Rock Salt', cursive;
+    font-size: min(1.5vw, 1.5vh);
+    margin: 0;
+}
+
+body p {
+    font-family: 'space-mono', mono;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40vw;
+    height: 100vh;
+    background: url('/images/space.gif') no-repeat center center;
+    background-repeat: repeat;
+    background-size: auto 100%;
+    border-left: 2px solid white;
+}
+
+.fullscreen {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.title_bar {
+    width: 100vw;
+    height: 5vh;
+    border-bottom: 2px solid black;
+
+    background-color: var(--blue);
+    color: white;
+}
+
+.title_page {
+    width: 100vw;
+    height: 100vh;
+    background-color: #181817;
+    color: white;
+}
+
+.title {
+    text-align: left;
+    margin: 0;
+    /* padding-top: 20vh; */
+    transform: translateY(50%);
+    color: white;
+    font-family: 'Redacted Script', cursive;
+    font-size: min(4vh, 4vw);
+}
+
+.title_name {
+    /* font-size: min(4.5vh, 4.5vw); */
+    font-family: 'Marck Script', cursive;
+}
+
+.main_container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.content_left {
+    width: 50%;
+    height: auto;
+    float: left;
+    margin: 0;
+}
+
+.content_center {
+    width: 20%;
+    height: auto;
+    margin: 0;
+}
+
+.content_right {
+    width: 30%;
+    height: auto;
+    float: right;
+    margin: 0;
+}
