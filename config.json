@@ -4,7 +4,8 @@
         "/pj":              "/ok.html",
         "/showerthoughts":  "/showerthoughts.html",
         "/thoughts":        "/showerthoughts.html",
-        "/blog":            "/blog.html" 
+        "/blog":            "/blog.html",
+        "/resume":          "/resume.pdf"
     },
     "hostnames": {
         "localhost": "",
