@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<canvas class="myCanvas">
+    <p>placeholder</p>
+</canvas>
+
+<script>
+
+    const canvas = document.querySelector(".myCanvas")
+    const width = canvas.width = window.innerWidth
+    const height = canvas.height = window.innerHeight
+
+    const xc = width/2
+    const yc = width/2
+
+    const ctx = canvas.getContext("2d")
+
+    // ctx.fillStyle = "rgb(0, 0, 0)"
+    // ctx.fillRect(0, 0, width, height)
+
+    ctx.lineWidth = Math.min(width, height)/200
+    console.log(ctx.lineWidth)
+    ctx.strokeStyle = "rgb(0, 0, 0)"
+    ctx.ellipse(xc, yc, 200, 100, 0, 0, 2*Math.PI)
+    ctx.stroke()
+
+
+</script>
