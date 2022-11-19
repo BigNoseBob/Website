@@ -12,8 +12,8 @@ async function main() {
     // HTTPS Server
     const port = 443
     const options = {
-        key: fs.readFileSync('./ssl/privkey.pem'),
-        cert: fs.readFileSync('./ssl/fullchain.pem'),
+        key: fs.readFileSync(__dirname + '/ssl/privkey.pem'),
+        cert: fs.readFileSync(__dirname + '/ssl/fullchain.pem'),
     }
 
     const server = https.createServer(options, async (req, res) => {
