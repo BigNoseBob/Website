@@ -20,7 +20,7 @@ const text_y = text_x * 2
 const r = (a, e, theta) => a*(1 - e^2)/(1 + e*Math.cos(theta))
 
 const params = new URLSearchParams(window.location.search)
-const param_dict = { "x": [], "y": [], "a": [], "e": [] }
+const param_dict = { "mu": [], "x": [], "y": [], "a": [], "e": [] }
 for (const [k,v] of params) {
     param_dict[k].push(parseFloat(v))
 }
@@ -100,12 +100,13 @@ function hohmann(mu, r1, r2) {
 
 for (i = 0; i < param_dict["a"].length; i++) {
     draw_orbit(
-        param_dict["x"][i],
-        param_dict["y"][i],
-        param_dict["a"][i], 
-        param_dict["e"][i]
+        param_dict["x"][i] || 0,
+        param_dict["y"][i] || 0,
+        param_dict["a"][i] || 0, 
+        param_dict["e"][i] || 0
         )
 }
 
-hohmann(3.986 * 10**14, param_dict["a"][0], param_dict["a"][1])
+const mu = param_dict["mu"][0] || 3.986 * 10**14
+hohmann(mu, param_dict["a"][0], param_dict["a"][1])
 
