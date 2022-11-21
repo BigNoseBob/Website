@@ -21,6 +21,7 @@ async function main() {
         // I wonder if this is still vulnerable to a url containing: /../Gort/ or something like that.
         let [ url, querystring ] = req.url.split('?')
         url = config.endpoints[url] || url
+
         if (config.blacklist.includes(url)) {
             res.end("[402] FORBIDDEN")
             return

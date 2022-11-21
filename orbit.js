@@ -24,7 +24,13 @@ const text_x = Math.min(width, height)/30
 const text_y = text_x * 2
 
 const params = new URLSearchParams(window.location.search)
-const param_dict = { "mu": [], "x": [], "y": [], "a": [], "e": [] }
+const param_dict = { 
+    "mu":   [3.986e14], 
+    "x":    [], 
+    "y":    [], 
+    "a":    [6780000, 7380000], 
+    "e":    [] 
+}
 for (const [k,v] of params) {
     console.log(k, v)
     param_dict[k].push(parseFloat(v))
@@ -108,12 +114,13 @@ for (i = 0; i < param_dict["a"].length; i++) {
         param_dict["x"][i] || 0,
         param_dict["y"][i] || 0,
         param_dict["a"][i] || 0, 
-        param_dict["e"][i] || 0
+        param_dict["e"][i] || 0,
+        scaling_factor
         )
 }
 
 let mu = param_dict["mu"][0] || 3.986 * 10**14
-hohmann(mu, param_dict["a"][0], param_dict["a"][1])
+hohmann(mu, param_dict["a"][0], param_dict["a"][1], scaling_factor)
 
 const mu_input = document.getElementById("mu")
 const R1_input = document.getElementById("R1")
@@ -125,6 +132,10 @@ generate_button.onclick = () => {
     mu = parseFloat(mu_input.value) || 3.986 * 10**14
     r1 = parseFloat(R1_input.value)
     r2 = parseFloat(R2_input.value)
+
+    // console.log(window.location)
+    // let [url, querystring] = window.location.href.split('?')
+    // window.location.href = url + `?mu=${mu}&a=${r1}&a=${r2}`
 
     let scaling_factor = 1
     if (2 * Math.max(r1, r2) > Math.min(height, width)) {
