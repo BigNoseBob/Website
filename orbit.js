@@ -114,7 +114,7 @@ for (i = 0; i < param_dict["a"].length; i++) {
         param_dict["e"][i] || 0
         )
 }
-const mu = param_dict["mu"][0] || 3.986 * 10**14
 
+const mu = param_dict["mu"][0] || 3.986 * 10**14
 hohmann(mu, param_dict["a"][0], param_dict["a"][1])
 
