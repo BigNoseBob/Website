@@ -66,10 +66,10 @@ body {
 
     height: 100vh;
     width: 50vw;
+
     float: left;
 
-    /* border-top: 2px solid white; */
-    /* border-bottom: 2px solid white; */
+    border-right: 2px solid white;
 
 }
 
@@ -313,7 +313,7 @@ body .title_page .title_container .title_body .title_body_section .highlight {
     line-height: 1;
 }
 
-body .title_page .title_container .title_body .title_body_section .sticky_note {
+.sticky_note {
 
     background-color: var(--mars-white);
     border-radius: 1vw;
@@ -325,19 +325,19 @@ body .title_page .title_container .title_body .title_body_section .sticky_note {
 
 }
 
-body .title_page .title_container .title_body .title_body_section .sticky_note .sticky_note_heading {
+.sticky_note_heading {
     font-family: 'Roboto Condensed', sans-serif;
     border-bottom: 2px solid var(--ash-gray);
     font-size: min(1.4vw, 1.4vh);
     color: gray;
 }
 
-body .title_page .title_container .title_body .title_body_section .sticky_note .sticky_note_body {
+.sticky_note_body {
     padding: 1vh 0;
     /* font-size: min(1.5vw, 1.5vh); */
 }
 
-body .title_page .title_container .title_body .title_body_section .sticky_note .sticky_note_date {
+.sticky_note_date {
     font-family: 'Roboto Condensed', sans-serif;
     text-align: left;
     font-size: min(1.4vw, 1.4vh);
@@ -348,7 +348,7 @@ body .title_page .title_container .title_body .title_body_section .sticky_note .
     margin-right: 0;
 }
 
-body .title_page .title_container .title_body .title_body_section .sticky_note_dark {
+.sticky_note_dark {
 
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 1vw;
@@ -360,20 +360,20 @@ body .title_page .title_container .title_body .title_body_section .sticky_note_d
 
 }
 
-body .title_page .title_container .title_body .title_body_section .sticky_note_dark .sticky_note_heading_dark {
+.sticky_note_heading_dark {
     font-family: 'Roboto Condensed', sans-serif;
     border-bottom: 2px solid var(--salmon-gray);
     font-size: min(1.4vw, 1.4vh);
     color: gray;
 }
 
-body .title_page .title_container .title_body .title_body_section .sticky_note_dark .sticky_note_body_dark {
+.sticky_note_body_dark {
     padding: 1vh 0;
     /* font-size: min(1.5vw, 1.5vh); */
     color: var(--mars-white);
 }
 
-body .title_page .title_container .title_body .title_body_section .sticky_note_dark .sticky_note_date_dark {
+.sticky_note_date_dark {
     font-family: 'Roboto Condensed', sans-serif;
     text-align: left;
     font-size: min(1.4vw, 1.4vh);

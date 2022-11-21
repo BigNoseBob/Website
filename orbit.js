@@ -23,9 +23,6 @@ ctx.font = `${Math.min(width, height)/30}px monospace`;
 const text_x = Math.min(width, height)/30
 const text_y = text_x * 2
 
-// Orbital Mechanics stuff
-const r = (a, e, theta) => a*(1 - e^2)/(1 + e*Math.cos(theta))
-
 const params = new URLSearchParams(window.location.search)
 const param_dict = { "mu": [], "x": [], "y": [], "a": [], "e": [] }
 for (const [k,v] of params) {
@@ -42,7 +39,7 @@ if (2 * Math.max(...param_dict["a"]) > Math.min(height, width)) {
  * @param {float} a semi-minor axis
  * @param {float} e eccentricity
  */
-function draw_orbit(x, y, a, e) {
+function draw_orbit(x, y, a, e, scaling_factor = 1) {
 
     x = scaling_factor * x
     y = scaling_factor * y
@@ -80,7 +77,7 @@ function draw_orbit(x, y, a, e) {
  * @param {*} r1 radius of inital circular orbit
  * @param {*} r2 radius of final circular orbit
  */
-function hohmann(mu, r1, r2) {
+function hohmann(mu, r1, r2, scaling_factor) {
 
     const v1 = (mu/r1)**0.5
     const v2 = (mu/r2)**0.5
@@ -98,7 +95,7 @@ function hohmann(mu, r1, r2) {
     const a_transfer = r1/(1 - e)
     const xc = -a_transfer*e
 
-    draw_orbit(xc, 0, a_transfer, e)
+    draw_orbit(xc, 0, a_transfer, e, scaling_factor)
 
     ctx.beginPath()
     ctx.fillStyle = "rgb(255, 255, 255)"
@@ -115,6 +112,30 @@ for (i = 0; i < param_dict["a"].length; i++) {
         )
 }
 
-const mu = param_dict["mu"][0] || 3.986 * 10**14
+let mu = param_dict["mu"][0] || 3.986 * 10**14
 hohmann(mu, param_dict["a"][0], param_dict["a"][1])
 
+const mu_input = document.getElementById("mu")
+const R1_input = document.getElementById("R1")
+const R2_input = document.getElementById("R2")
+const generate_button = document.getElementById("generate")
+
+generate_button.onclick = () => {
+
+    mu = parseFloat(mu_input.value)
+    r1 = parseFloat(R1_input.value)
+    r2 = parseFloat(R2_input.value)
+
+    let scaling_factor = 1
+    if (2 * Math.max(r1, r2) > Math.min(height, width)) {
+        scaling_factor = 0.8 * Math.min(height, width) / (2*Math.max(r1, r2))
+    }
+    console.log(scaling_factor)
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    draw_orbit(0, 0, r1, 0, scaling_factor)
+    draw_orbit(0, 0, r2, 0, scaling_factor)
+    hohmann(mu, r1, r2, scaling_factor)
+
+}
