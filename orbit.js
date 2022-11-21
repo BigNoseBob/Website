@@ -3,16 +3,23 @@
 
 // Draw orbits on html canvas
 
-const canvas = document.querySelector(".myCanvas")
-const width = canvas.width = window.innerWidth
-const height = canvas.height = window.innerHeight
+const body = document.body
+const canvas = document.querySelector("canvas")
+
+const width = canvas.width = body.offsetWidth * 0.5 // window.innerWidth
+const height = canvas.height = body.offsetHeight // window.innerHeight * 0.7
+
+console.log(window.innerWidth)
+
+// canvas.style.width = body.offsetWidth
+// canvas.style.height = body.offsetHeight * 0.7
 
 const xc = width/2
 const yc = height/2
 
 const ctx = canvas.getContext("2d")
 ctx.lineWidth = Math.min(width, height)/400
-ctx.font = `${Math.min(width, height)/30}px serif`;
+ctx.font = `${Math.min(width, height)/30}px monospace`;
 const text_x = Math.min(width, height)/30
 const text_y = text_x * 2
 
@@ -20,8 +27,9 @@ const text_y = text_x * 2
 const r = (a, e, theta) => a*(1 - e^2)/(1 + e*Math.cos(theta))
 
 const params = new URLSearchParams(window.location.search)
-const param_dict = { "x": [], "y": [], "a": [], "e": [] }
+const param_dict = { "mu": [], "x": [], "y": [], "a": [], "e": [] }
 for (const [k,v] of params) {
+    console.log(k, v)
     param_dict[k].push(parseFloat(v))
 }
 let scaling_factor = 1
@@ -43,12 +51,12 @@ function draw_orbit(x, y, a, e) {
     const b = a * (1 - e**2)**0.5       // semi-major axis (m)
 
     ctx.beginPath()
-    ctx.strokeStyle = "rgb(0, 0, 0)"
+    ctx.strokeStyle = "rgb(255, 255, 255)"
     ctx.ellipse(xc + x, yc - y, a, b, 0, 0, 2*Math.PI)
     ctx.stroke()
 
     ctx.beginPath()
-    ctx.fillStyle = "rgb(0, 0, 0)"
+    ctx.fillStyle = "rgb(0, 255, 0)"
     ctx.arc(xc + x + a*e, yc - y, 2, 0, 2*Math.PI)
     ctx.fill()
 
@@ -58,7 +66,7 @@ function draw_orbit(x, y, a, e) {
     ctx.fill()
 
     ctx.beginPath()
-    ctx.fillStyle = "rgb(0, 255, 0)"
+    ctx.fillStyle = "rgb(255, 255, 255)"
     ctx.arc(xc + x, yc - y, 2, 0, 2*Math.PI)
     ctx.fill()
     
@@ -93,19 +101,20 @@ function hohmann(mu, r1, r2) {
     draw_orbit(xc, 0, a_transfer, e)
 
     ctx.beginPath()
-    ctx.fillStyle = "rgb(0, 0, 0)"
+    ctx.fillStyle = "rgb(255, 255, 255)"
     ctx.fillText(`DeltaV = ${Math.round(delta_vtotal * 100) / 100} m/s`, text_x, text_y)
 
 }
 
 for (i = 0; i < param_dict["a"].length; i++) {
     draw_orbit(
-        param_dict["x"][i],
-        param_dict["y"][i],
-        param_dict["a"][i], 
-        param_dict["e"][i]
+        param_dict["x"][i] || 0,
+        param_dict["y"][i] || 0,
+        param_dict["a"][i] || 0, 
+        param_dict["e"][i] || 0
         )
 }
+const mu = param_dict["mu"][0] || 3.986 * 10**14
 
-hohmann(3.986 * 10**14, param_dict["a"][0], param_dict["a"][1])
+hohmann(mu, param_dict["a"][0], param_dict["a"][1])
 

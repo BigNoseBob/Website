@@ -53,6 +53,26 @@ body {
 
 }
 
+.heading {
+
+    height: 0vh;
+    width: 100vw;
+
+    background-color: #2b2828;
+
+}
+
+.canvas_div {
+
+    height: 100vh;
+    width: 50vw;
+    float: left;
+
+    /* border-top: 2px solid white; */
+    /* border-bottom: 2px solid white; */
+
+}
+
 .dot {
     border-radius: 50%;
     width: 7px;
