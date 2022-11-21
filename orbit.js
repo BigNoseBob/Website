@@ -122,7 +122,7 @@ const generate_button = document.getElementById("generate")
 
 generate_button.onclick = () => {
 
-    mu = parseFloat(mu_input.value)
+    mu = parseFloat(mu_input.value) || 3.986 * 10**14
     r1 = parseFloat(R1_input.value)
     r2 = parseFloat(R2_input.value)
 
