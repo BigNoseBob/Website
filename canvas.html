@@ -16,13 +16,24 @@
                 <p>placeholder</p>
             </canvas>
         </div>
-        <div style="padding: min(5vw, 5vh); float: right; width: 50vw; height: 50vh; transform: translateY(50%); font-family: 'space-mono'">
+        <div style="padding: min(5vw, 5vh); float: right; width: 50vw; height: 50vh; transform: translateY(40%); font-family: 'space-mono'">
             Hohmann Transfer Orbit Widget
             <br><br>
             µ &nbsp;= <input id="mu" value="3.986e14"><br>
             R1 = <input id="R1" value="6780000"><br>
             R2 = <input id="R2" value="7380000"><br><br>
             <button id="generate">Generate</button>
+            <br><br>
+            <div style="display: flex; border-top: 2px solid white; padding: min(3vw, 3vh);">
+                <span style="float: left; width: 50%;">
+                    v_R1 = <a id="vr1"></a><br>
+                    v_R2 = <a id="vr2"></a>
+                </span>
+                <span style="float: right; width: 50%;">
+                    v_π = <a id="vpi"></a><br>
+                    v_α = <a id="valpha"></a>
+                </span>
+            </div>
         </div>
     </div>
     
