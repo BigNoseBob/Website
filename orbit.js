@@ -122,9 +122,9 @@ function hohmann(mu, r1, r2, scaling_factor, orbit_color) {
 
     draw_orbit(xc, 0, a_transfer, e, scaling_factor, orbit_color)
 
-    ctx.beginPath()
-    ctx.fillStyle = "rgb(255, 255, 255)"
-    ctx.fillText(`ΔV = ${Math.round(delta_vtotal * 100) / 100} m/s`, text_x, text_y)
+    // ctx.beginPath()
+    // ctx.fillStyle = "rgb(255, 255, 255)"
+    // ctx.fillText(`ΔV = ${Math.round(delta_vtotal * 100) / 100} m/s`, text_x, text_y)
 
 }
 
