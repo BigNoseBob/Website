@@ -45,6 +45,8 @@ const v_alpha = document.getElementById("valpha")
 const v_r1 = document.getElementById("vr1")
 const v_r2 = document.getElementById("vr2")
 const deltav = document.getElementById("deltav")
+const eccentricity = document.getElementById("eccentricity")
+const a = document.getElementById("semi-major")
 
 /**
  * 
@@ -114,6 +116,9 @@ function hohmann(mu, r1, r2, scaling_factor, orbit_color) {
     const e = (1 - r1/r2)/(1 + r1/r2)
     const a_transfer = r1/(1 - e)
     const xc = -a_transfer*e
+
+    eccentricity.innerText = `${Math.round(e * 100) / 100}`
+    a.innerText = `${Math.round(a_transfer * 100) / 100}`
 
     draw_orbit(xc, 0, a_transfer, e, scaling_factor, orbit_color)
 
