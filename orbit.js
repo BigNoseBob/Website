@@ -44,6 +44,7 @@ const v_pi = document.getElementById("vpi")
 const v_alpha = document.getElementById("valpha")
 const v_r1 = document.getElementById("vr1")
 const v_r2 = document.getElementById("vr2")
+const deltav = document.getElementById("deltav")
 
 /**
  * 
@@ -105,6 +106,8 @@ function hohmann(mu, r1, r2, scaling_factor, orbit_color) {
     const delta_vpi = vpi_e - v1
     const delta_valpha = v2 - valpha_e
     const delta_vtotal = Math.abs(delta_vpi) + Math.abs(delta_valpha)
+    deltav.innerText = `${Math.round(delta_vtotal * 100) / 100} m/s`
+
     console.log(`ΔV = ${Math.round(delta_vtotal * 100) / 100} m/s`)
 
     // Geomtry of the ellipse
