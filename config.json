@@ -6,7 +6,8 @@
         "/thoughts":        "/showerthoughts.html",
         "/blog":            "/blog.html",
         "/resume":          "/resume.pdf",
-        "/hohmann":         "/canvas.html"
+        "/hohmann":         "/hohmann.html",
+        "/hohmann2d":       "/canvas.html"
     },
     "hostnames": {
         "localhost": "",
