@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<header>
+    <meta charset="UTF-8">
+    <title>Oliver Rayner</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</header>
+
+	<body>
+        <div style="display: flex;">
+            <div id="canvas" style="width: 50vw; height: 100vh; float: left;">
+
+            </div>
+            <div style="width: 50vw; margin: auto">
+
+                <div style="padding: min(5vw, 5vh); margin: auto; font-family: 'space-mono'">
+
+                    Hohmann Transfer Orbit Widget
+                    <br><br>
+                    µ = <input id="mu" value="3.986e14"><br>
+                    a = <input id="a" value="6780000"><br>
+                    e = <input id="e" value="0"><br>
+                    θ = <input id="theta" value="0"><br>
+                    φ = <input id="phi" value="0"><br><br>
+                    <button id="generate">Generate</button> 
+                    <button id="hohmann">Hohmann</button>
+                    <button id="clear">Clear</button>
+
+                    <br><br>
+                    <div style="display: flex; border-top: 2px solid white; margin: auto; padding: min(2vw, 2vh);">
+                        <span style="float: left; width: 50%;">
+                            v_C1 = <a id="vc1">0</a> m/s<br>
+                            v_C2 = <a id="vc2">0</a> m/s<br>
+                            ΔV &nbsp;&nbsp;= <a id="deltav">0</a> m/s<br><br>
+                            a &nbsp;&nbsp;&nbsp;= <a id="semi-major">0</a> m
+                        </span>
+                        <span style="float: right; width: 50%;">
+                            v_π = <a id="vpi">0</a> m/s<br>
+                            v_α = <a id="valpha">0</a> m/s<br><br><br>
+                            e &nbsp;&nbsp;= <a id="eccentricity">0</a>
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+	</body>
+    
+</html>
+<script type="module" src="./js/hohmann.js"></script>
