@@ -12,7 +12,7 @@ export class Canvas {
     /**
      * @param container HTML <div> element
      */
-    constructor(window, container, color="#171515") {
+    constructor(window, container, fov=45, color="#171515") {
         
         // Get scene parameters
         this.container  = container
@@ -25,7 +25,7 @@ export class Canvas {
         this.renderer.setSize(this.width, this.height)
         this.container.appendChild(this.renderer.domElement)
 
-        this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 1, 500)
+        this.camera = new THREE.PerspectiveCamera(fov, this.width / this.height, 1, 2000)
         window.addEventListener("resize", () => {
             this.width = this.container.offsetWidth
             this.height = this.container.offsetHeight

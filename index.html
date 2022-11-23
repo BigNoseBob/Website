@@ -98,17 +98,31 @@
                             <div class="sticky_note_date">SINCE<br><a class="highlight">06/22</a></div>
                         </div>
                         <br>
-                        In my free time I'm either climbing, running, or working on another project. Most recently, I've been working on
-                        my discord bot <a class="highlight" style="color: var(--mars-light-orange);">GORT</a>.
+                        In my free time I'm either climbing, running, or working on another project. 
                         <br><br>
-                        You can check out the project 
+                        Most recently, I've taken up a fascination with <a class="highlight" style="color: var(--mars-light-orange);">ORBITAL MECHANICS</a>.
+                        
+                        <div id="canvas" style="width: 100%; height: 25vh;"></div>
+                        
+                        You can check out is project 
                         <div class="tooltip">
-                            <a class="link" href="/gort.html" target="__blank">here</a>.
+                            <a class="link" href="/hohmann" target="__blank">here</a>.
                             <div class="left">
-                                <div class="text-content">https://oliverr.dev/gort</div>
+                                <div class="text-content">https://oliverr.dev/hohmann</div>
                                 <i></i>
                             </div>
                         </div>
+                        <br><br>
+                        <script type="module">
+                            import { Canvas } from "./js/Canvas.js"
+                            const container = document.getElementById('canvas')
+                            const canvas = new Canvas(window, container, 10)
+                            canvas.animate()
+
+                            let o1 = canvas.ellipse({ a: 8e6 })
+                            let o2 = canvas.ellipse({ a: 4e6, theta: 90, phi: 45 })
+                            canvas.hohmann(o1, o2)
+                        </script>
                     </div>
                 </div>
                 <div class="personal_note">
