@@ -38,6 +38,7 @@ export class Canvas {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
         this.camera.position.set(-40, 15, 105)
         this.camera.lookAt(0, 0, 0)
+        // this.controls.autoRotate = true
         this.controls.update()
 
         this.scene = new THREE.Scene()

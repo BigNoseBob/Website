@@ -7,6 +7,8 @@ import { Canvas } from "./Canvas.js"
 
 const container = document.getElementById('canvas')
 const canvas = new Canvas(window, container)
+canvas.controls.autoRotate = true
+canvas.controls.autoRotateSpeed = 0.5
 canvas.animate()
 
 const clear_button = document.getElementById('clear')
@@ -60,4 +62,8 @@ hohmann_button.onclick = update_hohmann_results
 let o1 = canvas.ellipse({ a: 8e6 })
 let o2 = canvas.ellipse({ a: 4e6, theta: 90, phi: 45 })
 update_hohmann_results()
+
+container.addEventListener("click", () => {
+    canvas.controls.autoRotate = false
+})
 

@@ -34,7 +34,7 @@
                         </div>
                         <br><br>
                         <div class="tooltip">
-                            Come check out my <a class="link" href="/resume.pdf" target="_blank">resume</a>.
+                            If you're hiring, take a look at my <a class="link" href="/resume.pdf" target="_blank">resume</a>.
                             <div class="left">
                                 <div class="text-content">https://oliverr.dev/resume</div>
                                 <i></i>
@@ -117,11 +117,17 @@
                             import { Canvas } from "./js/Canvas.js"
                             const container = document.getElementById('canvas')
                             const canvas = new Canvas(window, container, 10)
-                            canvas.animate()
+                            canvas.controls.autoRotate = true
+                            // canvas.animate()
 
                             let o1 = canvas.ellipse({ a: 8e6 })
                             let o2 = canvas.ellipse({ a: 4e6, theta: 90, phi: 45 })
                             canvas.hohmann(o1, o2)
+
+                            container.addEventListener("click", () => {
+                                canvas.controls.autoRotate = false
+                            })
+
                         </script>
                     </div>
                 </div>

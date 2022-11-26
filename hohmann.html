@@ -10,6 +10,13 @@
 </header>
 
 	<body>
+
+        <script>
+            const audio = new Audio('./audio/sneaky_adventure.mp3')
+            audio.play().catch(err => console.log(err))
+            audio.loop = true
+        </script>
+
         <div style="display: flex;">
             <div id="canvas" style="width: 50vw; height: 100vh; float: left;">
 
