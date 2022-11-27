@@ -28,7 +28,7 @@ export class Canvas {
         this.renderer.setSize(this.width, this.height)
         this.container.appendChild(this.renderer.domElement)
 
-        this.camera = new THREE.PerspectiveCamera(fov, this.width / this.height, 1, 2000)
+        this.camera = new THREE.PerspectiveCamera(fov, this.width / this.height, 0.01, 10e6)
         window.addEventListener("resize", () => {
             this.width = this.container.offsetWidth
             this.height = this.container.offsetHeight
@@ -50,6 +50,7 @@ export class Canvas {
         this.orbits = []
         this.scaling_factor = 1
         this.mu = 4.282837e13       // Mars gravitational parameter
+        this.set_center_body({ mu: this.mu })
 
         // Start rendering
         this.animate = () => {
@@ -71,7 +72,7 @@ export class Canvas {
         this.orbits = []
         this.scene.children = []
         this.scene.add(new THREE.AxesHelper());
-        this.planet({ mu: this.mu })
+        this.set_center_body({ mu: this.mu })
     }
 
     rescale() {
@@ -183,12 +184,12 @@ export class Canvas {
 
     }
 
-    planet({ mu }) {
+    planet({ mu, x, y, z }) {    // Should add position to optional arguments
 
         mu          = mu || 3.986e14
-        
+
         const texture_folder = 'js/textures'
-        const planet_data = this.body_from_mu(mu)
+        const planet_data = this.body_from_mu(mu) || { name: 'unknown', mu: mu, alpha: 0, radius: 4e5 }
         const body = planet_data.name || "earth"
         const axis_tilt = planet_data.alpha || 26.34
         const radius = planet_data.radius || 6.371e6
@@ -205,7 +206,14 @@ export class Canvas {
             quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), 0.001 * Math.PI/2)
             sphere.quaternion.multiplyQuaternions(sphere.quaternion, quaternion)
         }
+        return sphere
 
+    }
+
+    set_center_body({ mu }) {
+        if (this.body) this.body.removeFromParent()
+        mu          = mu || this.mu
+        this.body = this.planet({ mu: mu })
     }
 
     body_from_mu(mu) {

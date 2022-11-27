@@ -38,7 +38,8 @@
     "ceres"     : { 
         "name": "ceres",
         "mu": 6.26325e10, 
-        "alpha": 0 
+        "alpha": 0,
+        "radius": 4.76e5
     },
     "jupiter"   : { 
         "name": "jupiter",
@@ -67,11 +68,13 @@
     "pluto"     : { 
         "name": "pluto",
         "mu": 8.71e11, 
-        "alpha": 57.47 
+        "alpha": 57.47,
+        "radius": 1.1883e6
     },
     "eris"      : { 
         "name": "eris",
         "mu": 1.108e12, 
-        "alpha": 0 
+        "alpha": 0,
+        "radius": 1.163e6
     }
 }

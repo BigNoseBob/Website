@@ -115,13 +115,22 @@
                         <br><br>
                         <script type="module">
                             import { Canvas } from "./js/Canvas.js"
+                            const PLANET_DATA = await fetch('./js/planet_data.json').then(data => data.json())
+
+                            const keys = Object.keys(PLANET_DATA);
+                            const random_body = PLANET_DATA[keys[ keys.length * Math.random() << 0]]
+                            const mu        = random_body.mu
+                            const radius    = random_body.radius
+                            const alpha     = random_body.alpha || 23.44
+
                             const container = document.getElementById('canvas')
                             const canvas = new Canvas(window, container, 10)
+                            canvas.mu = mu
                             canvas.controls.autoRotate = true
                             canvas.animate()
 
-                            let o1 = canvas.ellipse({ a: 16e6 })
-                            let o2 = canvas.ellipse({ a: 10e6, theta: 90, phi: 23.44 })
+                            let o1 = canvas.ellipse({ a: 2.33 * radius })
+                            let o2 = canvas.ellipse({ a: 3.33 * radius, theta: 90, phi: alpha })
                             canvas.hohmann(o1, o2)
 
                             container.addEventListener("click", () => {

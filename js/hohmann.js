@@ -23,6 +23,7 @@ const theta_input       = document.getElementById('theta')
 const phi_input         = document.getElementById('phi')
 const generate_button   = document.getElementById('generate')
 const hohmann_button    = document.getElementById('hohmann')
+const mu_button         = document.getElementById('setmu')
 
 const vc1               = document.getElementById('vc1')
 const vc2               = document.getElementById('vc2')
@@ -32,16 +33,18 @@ const deltav            = document.getElementById('deltav')
 const a                 = document.getElementById('semi-major')
 const e                 = document.getElementById('eccentricity')
 
-mu_input.value = canvas.mu
-
 generate_button.onclick = () => {
-    canvas.mu = parseFloat(mu_input.value)
     canvas.ellipse({
         a:      parseFloat(a_input.value),
         e:      parseFloat(e_input.value),
         theta:  parseFloat(theta_input.value),
         phi:    parseFloat(phi_input.value),
     })
+}
+
+mu_button.onclick = () => {
+    canvas.mu = parseFloat(mu_input.value)
+    canvas.set_center_body({ mu: canvas.mu })
 }
 
 function update_hohmann_results() {
@@ -66,8 +69,6 @@ hohmann_button.onclick = update_hohmann_results
 let o1 = canvas.ellipse({ a: 16e6 })
 let o2 = canvas.ellipse({ a: 10e6, theta: 90, phi: 23.44 })
 update_hohmann_results()
-
-// canvas.planet({ mu: 3.39e6 })
 
 container.addEventListener("click", () => {
     canvas.controls.autoRotate = false
