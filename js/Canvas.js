@@ -198,12 +198,12 @@ export class Canvas {
         const sphere = this.sphere(radius, texture_path)
 
         const quaternion = new THREE.Quaternion()
-        quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, -1), axis_tilt * Math.PI/2);
+        quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, 1), axis_tilt * Math.PI/180);
         sphere.applyQuaternion(quaternion)
 
         sphere.update = () => {
             const quaternion = new THREE.Quaternion()
-            quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), 0.001 * Math.PI/2)
+            quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), 0.1 * Math.PI/180)
             sphere.quaternion.multiplyQuaternions(sphere.quaternion, quaternion)
         }
         return sphere

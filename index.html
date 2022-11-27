@@ -123,6 +123,9 @@
                             const radius    = random_body.radius
                             const alpha     = random_body.alpha || 23.44
 
+                            console.log(random_body)
+                            console.log(alpha)
+
                             const container = document.getElementById('canvas')
                             const canvas = new Canvas(window, container, 10)
                             canvas.mu = mu
@@ -130,7 +133,7 @@
                             canvas.animate()
 
                             let o1 = canvas.ellipse({ a: 2.33 * radius })
-                            let o2 = canvas.ellipse({ a: 3.33 * radius, theta: 90, phi: alpha })
+                            let o2 = canvas.ellipse({ a: 3.33 * radius, theta: 90, phi: 90 - alpha })
                             canvas.hohmann(o1, o2)
 
                             container.addEventListener("click", () => {
