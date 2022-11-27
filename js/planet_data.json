@@ -1,0 +1,77 @@
+{
+    "sun"       : {
+        "name": "sol",
+        "mu": 1.32712440018e20, 
+        "alpha": 7.25,
+        "radius": 6.95e8
+    },
+    "mercury"   : { 
+        "name": "mercury",
+        "mu": 2.2032e13, 
+        "alpha": 0.03,
+        "radius": 2.44e6
+    },
+    "venus"     : { 
+        "name": "venus",
+        "mu": 3.24859e14, 
+        "alpha": 2.64,
+        "radius": 6.052e6
+    },
+    "earth"     : { 
+        "name": "earth",
+        "mu": 3.986004418e14, 
+        "alpha": 23.44,
+        "radius": 6.371e6
+    },
+    "moon"      : { 
+        "name": "moon",
+        "mu": 4.9048695e12, 
+        "alpha": 6.88,
+        "radius": 1.7374e6
+    },
+    "mars"      : { 
+        "name": "mars",
+        "mu": 4.282837e13, 
+        "alpha": 25.19,
+        "radius": 3.39e6
+    },
+    "ceres"     : { 
+        "name": "ceres",
+        "mu": 6.26325e10, 
+        "alpha": 0 
+    },
+    "jupiter"   : { 
+        "name": "jupiter",
+        "mu": 1.26686534e17, 
+        "alpha": 3.13,
+        "radius": 6.9911e7
+    },
+    "saturn"    : { 
+        "name": "saturn",
+        "mu": 3.7831187e16, 
+        "alpha": 26.73,
+        "radius": 5.8232e7
+    },
+    "uranus"    : { 
+        "name": "uranus",
+        "mu": 5.793939e15, 
+        "alpha": 82.23,
+        "radius": 2.5362e7
+    },
+    "neptune"   : { 
+        "name": "neptune",
+        "mu": 6.836529e15, 
+        "alpha": 28.32,
+        "radius": 2.4622e7
+    },
+    "pluto"     : { 
+        "name": "pluto",
+        "mu": 8.71e11, 
+        "alpha": 57.47 
+    },
+    "eris"      : { 
+        "name": "eris",
+        "mu": 1.108e12, 
+        "alpha": 0 
+    }
+}

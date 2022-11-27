@@ -7,8 +7,10 @@ import { Canvas } from "./Canvas.js"
 
 const container = document.getElementById('canvas')
 const canvas = new Canvas(window, container)
+
 canvas.controls.autoRotate = true
 canvas.controls.autoRotateSpeed = 0.5
+canvas.mu = 4.282837e13
 canvas.animate()
 
 const clear_button = document.getElementById('clear')
@@ -29,6 +31,8 @@ const valpha            = document.getElementById('valpha')
 const deltav            = document.getElementById('deltav')
 const a                 = document.getElementById('semi-major')
 const e                 = document.getElementById('eccentricity')
+
+mu_input.value = canvas.mu
 
 generate_button.onclick = () => {
     canvas.mu = parseFloat(mu_input.value)
@@ -59,9 +63,11 @@ function update_hohmann_results() {
 }
 hohmann_button.onclick = update_hohmann_results
 
-let o1 = canvas.ellipse({ a: 8e6 })
-let o2 = canvas.ellipse({ a: 4e6, theta: 90, phi: 45 })
+let o1 = canvas.ellipse({ a: 16e6 })
+let o2 = canvas.ellipse({ a: 10e6, theta: 90, phi: 23.44 })
 update_hohmann_results()
+
+// canvas.planet({ mu: 3.39e6 })
 
 container.addEventListener("click", () => {
     canvas.controls.autoRotate = false

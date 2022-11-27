@@ -7,6 +7,9 @@ import * as THREE from "../node_modules/three/build/three.module.js"
 import { OrbitControls } from "../node_modules/three/examples/jsm/controls/OrbitControls.js"
 import { rotate_points } from "./rotation_matricies.js"
 
+const planet_json = await fetch('./js/planet_data.json')
+const PLANET_DATA = await planet_json.json()
+
 export class Canvas {
 
     /**
@@ -38,7 +41,6 @@ export class Canvas {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
         this.camera.position.set(-40, 15, 105)
         this.camera.lookAt(0, 0, 0)
-        // this.controls.autoRotate = true
         this.controls.update()
 
         this.scene = new THREE.Scene()
@@ -47,15 +49,19 @@ export class Canvas {
         // Objects in Scene
         this.orbits = []
         this.scaling_factor = 1
-        this.mu = 3.986e14
+        this.mu = 4.282837e13       // Mars gravitational parameter
 
         // Start rendering
         this.animate = () => {
             requestAnimationFrame( this.animate )
             this.controls.update()
+            
+            for (const obj of this.scene.children) {
+                if ('update' in obj) obj.update()
+            }
+
             this.renderer.render(this.scene, this.camera)
         }
-        this.animate()
 
     }
 
@@ -65,6 +71,7 @@ export class Canvas {
         this.orbits = []
         this.scene.children = []
         this.scene.add(new THREE.AxesHelper());
+        this.planet({ mu: this.mu })
     }
 
     rescale() {
@@ -157,6 +164,60 @@ export class Canvas {
         }
         Object.entries(parameters).forEach( (k, v) => parameters[k[0]] = Math.round(k[1] * 100)/100)
         return parameters
+
+    }
+
+    // ------------------------ Look Good Stuff ------------------------
+
+    sphere(radius, texture_path='js/textures/earth.jpg') {
+
+        const geometry = new THREE.SphereGeometry(radius * this.scaling_factor, 32, 16)
+        // const material = new THREE.MeshBasicMaterial({ color: '#34c6eb' })
+
+        const texture = new THREE.TextureLoader().load(texture_path)
+        const material = new THREE.MeshBasicMaterial({ map: texture })
+        const sphere = new THREE.Mesh(geometry, material)
+
+        this.scene.add(sphere)
+        return sphere
+
+    }
+
+    planet({ mu }) {
+
+        mu          = mu || 3.986e14
+        
+        const texture_folder = 'js/textures'
+        const planet_data = this.body_from_mu(mu)
+        const body = planet_data.name || "earth"
+        const axis_tilt = planet_data.alpha || 26.34
+        const radius = planet_data.radius || 6.371e6
+        
+        const texture_path = texture_folder + `/${body}.jpg` || texture_folder + `/earth.jpg`
+        const sphere = this.sphere(radius, texture_path)
+
+        const quaternion = new THREE.Quaternion()
+        quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, -1), axis_tilt * Math.PI/2);
+        sphere.applyQuaternion(quaternion)
+
+        sphere.update = () => {
+            const quaternion = new THREE.Quaternion()
+            quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), 0.001 * Math.PI/2)
+            sphere.quaternion.multiplyQuaternions(sphere.quaternion, quaternion)
+        }
+
+    }
+
+    body_from_mu(mu) {
+
+        const error_bound = 0.05
+        const within_bound = (known) => Math.abs(mu - known) <= error_bound * known
+
+        for (const v of Object.values(PLANET_DATA)) {
+            if (within_bound(v.mu)) return v
+        }
+        return null
+
 
     }
 

@@ -118,10 +118,10 @@
                             const container = document.getElementById('canvas')
                             const canvas = new Canvas(window, container, 10)
                             canvas.controls.autoRotate = true
-                            // canvas.animate()
+                            canvas.animate()
 
-                            let o1 = canvas.ellipse({ a: 8e6 })
-                            let o2 = canvas.ellipse({ a: 4e6, theta: 90, phi: 45 })
+                            let o1 = canvas.ellipse({ a: 16e6 })
+                            let o2 = canvas.ellipse({ a: 10e6, theta: 90, phi: 23.44 })
                             canvas.hohmann(o1, o2)
 
                             container.addEventListener("click", () => {
