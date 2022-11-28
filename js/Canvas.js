@@ -15,12 +15,23 @@ export class Canvas {
     /**
      * @param container HTML <div> element
      */
-    constructor(window, container, fov=45, color="#171515") {
+    constructor({ window, container, mu, fov, color, container_offsetX, container_offsetY, axis_helper }) {
         
+        window      = window || null
+        container   = container || null
+        mu          = mu || 4.282837e13       // Mars gravitational parameter
+        fov         = fov || 45
+        color       = color || "#171515"
+
+        container_offsetX = container_offsetX || 0
+        container_offsetY = container_offsetY || 0
+
         // Get scene parameters
-        this.container  = container
-        this.height     = container.offsetHeight
-        this.width      = container.offsetWidth
+        this.container      = container
+        this.height         = container.offsetHeight
+        this.width          = container.offsetWidth
+        this.resize_factor  = 0.8;  // Default 80%
+        this.axis_helper    = Boolean(axis_helper)
 
         // Initalise Three.JS renderer
         this.renderer = new THREE.WebGLRenderer()
@@ -49,8 +60,18 @@ export class Canvas {
         // Objects in Scene
         this.orbits = []
         this.scaling_factor = 1
-        this.mu = 4.282837e13       // Mars gravitational parameter
+        this.mu = mu
         this.set_center_body({ mu: this.mu })
+        this.rescale()
+
+        // Raycasting
+        const pointer = new THREE.Vector2()
+        this.pointer = pointer
+        function on_pointer_move(event) {
+            pointer.x = ( (event.clientX + container_offsetX) / container.offsetWidth ) * 2 - 1
+	        pointer.y = - ( (event.clientY + container_offsetY) / container.offsetHeight ) * 2 + 1
+        }
+        window.addEventListener("pointermove", on_pointer_move)
 
         // Start rendering
         this.animate = () => {
@@ -60,6 +81,7 @@ export class Canvas {
             for (const obj of this.scene.children) {
                 if ('update' in obj) obj.update()
             }
+            this.raycasting()
 
             this.renderer.render(this.scene, this.camera)
         }
@@ -71,20 +93,21 @@ export class Canvas {
     clear() {
         this.orbits = []
         this.scene.children = []
-        this.scene.add(new THREE.AxesHelper());
+        if (this.axis_helper) this.scene.add(new THREE.AxesHelper());
         this.set_center_body({ mu: this.mu })
     }
 
     rescale() {
-        const orbits_copy = Array.from(this.orbits)
-        const max_a = Math.max(...this.orbits.map( orbit => orbit.a ))
+        const orbits_copy = Array.from(this.orbits) // Finding max of all orbits and orbiting body radius
+        const max_a = Math.max(Math.max(...this.orbits.map( orbit => orbit.a )), this.body.geometry.parameters.radius)
     
-        if (2 * max_a > Math.min(this.height, this.width) / 7 && this.scaling_factor > 0.8 * Math.min(this.height, this.width) / (7*2*max_a)) {
-            this.scaling_factor = 0.8 * Math.min(this.height, this.width) / (7*2*max_a)
+        if (2 * max_a > Math.min(this.height, this.width) / 7 && this.scaling_factor > this.resize_factor * Math.min(this.height, this.width) / (7*2*max_a)) {
+            this.scaling_factor = this.resize_factor * Math.min(this.height, this.width) / (7*2*max_a)
             this.clear()
             for (const orbit of orbits_copy) {
                 this.ellipse(orbit)
             }
+            this.set_center_body({ mu: this.mu })
         }
     }
 
@@ -176,7 +199,7 @@ export class Canvas {
         // const material = new THREE.MeshBasicMaterial({ color: '#34c6eb' })
 
         const texture = new THREE.TextureLoader().load(texture_path)
-        const material = new THREE.MeshBasicMaterial({ map: texture })
+        const material = texture_path == 'js/textures/unknown.jpg'? new THREE.MeshBasicMaterial({ color: "#4e5861" }) : new THREE.MeshBasicMaterial({ map: texture })
         const sphere = new THREE.Mesh(geometry, material)
 
         this.scene.add(sphere)
@@ -189,7 +212,7 @@ export class Canvas {
         mu          = mu || 3.986e14
 
         const texture_folder = 'js/textures'
-        const planet_data = this.body_from_mu(mu) || { name: 'unknown', mu: mu, alpha: 0, radius: 4e5 }
+        const planet_data = this.body_from_mu(mu) || { name: 'unknown', mu: mu, alpha: 0, radius: 10 }
         const body = planet_data.name || "earth"
         const axis_tilt = planet_data.alpha || 26.34
         const radius = planet_data.radius || 6.371e6
@@ -226,7 +249,20 @@ export class Canvas {
         }
         return null
 
-
     }
+
+    // ------------------------ Raycasting ------------------------
+
+    raycasting() {
+
+        const raycaster = new THREE.Raycaster()
+
+        raycaster.setFromCamera(this.pointer, this.camera)
+        const intersects = raycaster.intersectObjects( this.scene.children );
+        this.intersects = intersects
+        
+    }
+
+
 
 }

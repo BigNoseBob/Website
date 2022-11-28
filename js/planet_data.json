@@ -76,5 +76,11 @@
         "mu": 1.108e12, 
         "alpha": 0,
         "radius": 1.163e6
+    },
+    "makemake"  : {
+        "name": "makemake",
+        "mu": 2.069e11,
+        "alpha": 0,
+        "radius": 7.15e5
     }
 }
