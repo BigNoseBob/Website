@@ -11,7 +11,7 @@ const canvas = new Canvas({
     container, 
     fov: 50,
     // mu: 1.26686534e17,
-    container_offsetX: window.innerWidth * 0.35 * 1.6
+    container_offsetX: window.innerWidth * 0.50 * 2.0
 })
 
 canvas.controls.autoRotate = true

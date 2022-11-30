@@ -118,7 +118,8 @@
                             const PLANET_DATA = await fetch('./js/planet_data.json').then(data => data.json())
 
                             const keys = Object.keys(PLANET_DATA);
-                            const random_body = PLANET_DATA[keys[ keys.length * Math.random() << 0]]
+                            // const random_body = PLANET_DATA[keys[ keys.length * Math.random() << 0]]
+                            const random_body = PLANET_DATA["mars"]
                             const mu        = random_body.mu
                             const radius    = random_body.radius
                             const alpha     = random_body.alpha || 23.44
@@ -127,7 +128,7 @@
                             console.log(alpha)
 
                             const container = document.getElementById('canvas')
-                            const canvas = new Canvas(window, container, 10)
+                            const canvas = new Canvas({ window, container, fov:10 })
                             canvas.mu = mu
                             canvas.controls.autoRotate = true
                             canvas.animate()

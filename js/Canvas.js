@@ -15,7 +15,7 @@ export class Canvas {
     /**
      * @param container HTML <div> element
      */
-    constructor({ window, container, mu, fov, color, container_offsetX, container_offsetY, axis_helper }) {
+    constructor({ window, container, mu, fov, color, container_offsetX, container_offsetY, axis_helper, auto_resize }) {
         
         window      = window || null
         container   = container || null
@@ -32,6 +32,7 @@ export class Canvas {
         this.width          = container.offsetWidth
         this.resize_factor  = 0.8;  // Default 80%
         this.axis_helper    = Boolean(axis_helper)
+        this.auto_resize    = auto_resize == undefined ? true : Boolean(auto_resize)
 
         // Initalise Three.JS renderer
         this.renderer = new THREE.WebGLRenderer()
@@ -62,7 +63,7 @@ export class Canvas {
         this.scaling_factor = 1
         this.mu = mu
         this.set_center_body({ mu: this.mu })
-        this.rescale()
+        if (this.auto_resize) this.rescale()
 
         // Raycasting
         const pointer = new THREE.Vector2()
@@ -125,7 +126,7 @@ export class Canvas {
         
         const orbit = { a, e, x, y, theta, phi, color }
         this.orbits.push(orbit)
-        this.rescale()
+        if (this.auto_resize) this.rescale()
 
         const material = new THREE.LineBasicMaterial({ color: color })
 
@@ -210,6 +211,10 @@ export class Canvas {
     planet({ mu, x, y, z }) {    // Should add position to optional arguments
 
         mu          = mu || 3.986e14
+
+        x           = x || 0
+        y           = y || 0
+        z           = z || 0
 
         const texture_folder = 'js/textures'
         const planet_data = this.body_from_mu(mu) || { name: 'unknown', mu: mu, alpha: 0, radius: 10 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<header>
+    <meta charset="UTF-8">
+    <title>Oliver Rayner</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</header>
+
+	<body>
+        <div style="display: block; height: 100vh; width: 100vw;">
+            <div id="canvas" style="width: 200vw; height: 200vh; position: absolute; left: 0%; transform: translateX(-50%);"></div>
+            <div style="position: absolute; font-family: 'space-mono'; color: white; bottom: 0; right: 0; padding: min(2vh, 2vw); text-align: right;">
+                Oliver Rayner
+            </div>
+        </div>
+	</body>
+    
+</html>
+<script type="module">
+
+    import { Canvas } from "./js/Canvas.js"
+
+    const container = document.getElementById('canvas')
+    const canvas = new Canvas({
+        window, 
+        container, 
+        fov: 50,
+        container_offsetX: window.innerWidth * 0.50 * 2,
+        container_offsetY: window.innerHeight * 0.50 * 2,
+    })
+
+    canvas.controls.autoRotate = true
+    canvas.controls.autoRotateSpeed = 0.5
+    canvas.resize_factor = 0.25;
+    canvas.animate()
+
+    canvas.ellipse({ a: 4.5e6, theta: 90, phi: 90-25.9 })
+    canvas.auto_resize = false
+    
+    canvas.ellipse({ a: 9.375e6, e: 0.015, theta: 90, phi: 90-1.1 })
+    const moon = canvas.planet({ mu: 7.0748e5 })
+    moon.translateZ((9.375e6 - 112670) * canvas.scaling_factor)
+
+</script>

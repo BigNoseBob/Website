@@ -82,5 +82,11 @@
         "mu": 2.069e11,
         "alpha": 0,
         "radius": 7.15e5
+    },
+    "phobos"    : {
+        "name": "phobos",
+        "mu": 7.0748e5,
+        "alpha": 0,
+        "radius": 112670
     }
 }
