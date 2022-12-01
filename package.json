@@ -2,6 +2,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "mime": "^3.0.0",
+    "stats.js": "^0.17.0",
     "three": "^0.146.0"
   }
 }

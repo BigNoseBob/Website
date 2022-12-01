@@ -6,6 +6,7 @@
 import * as THREE from "../node_modules/three/build/three.module.js"
 import { OrbitControls } from "../node_modules/three/examples/jsm/controls/OrbitControls.js"
 import { rotate_points } from "./rotation_matricies.js"
+import Stats from '../node_modules/stats.js/src/Stats.js'
 
 const planet_json = await fetch('./js/planet_data.json')
 const PLANET_DATA = await planet_json.json()
@@ -15,13 +16,14 @@ export class Canvas {
     /**
      * @param container HTML <div> element
      */
-    constructor({ window, container, mu, fov, color, container_offsetX, container_offsetY, axis_helper, auto_resize }) {
+    constructor({ window, container, mu, fov, color, container_offsetX, container_offsetY, axis_helper, auto_resize, framerate }) {
         
         window      = window || null
         container   = container || null
         mu          = mu || 4.282837e13       // Mars gravitational parameter
         fov         = fov || 45
         color       = color || "#171515"
+        framerate    = framerate || 60
 
         container_offsetX = container_offsetX || 0
         container_offsetY = container_offsetY || 0
@@ -65,6 +67,9 @@ export class Canvas {
         this.set_center_body({ mu: this.mu })
         if (this.auto_resize) this.rescale()
 
+        // Lighting
+        this.scene.add(new THREE.AmbientLight())
+
         // Raycasting
         const pointer = new THREE.Vector2()
         this.pointer = pointer
@@ -74,17 +79,28 @@ export class Canvas {
         }
         window.addEventListener("pointermove", on_pointer_move)
 
+        const stats = new Stats()
+        document.body.appendChild(stats.dom)
+
         // Start rendering
         this.animate = () => {
-            requestAnimationFrame( this.animate )
-            this.controls.update()
-            
-            for (const obj of this.scene.children) {
-                if ('update' in obj) obj.update()
-            }
-            this.raycasting()
 
-            this.renderer.render(this.scene, this.camera)
+            stats.begin()
+            setTimeout( () => {
+        
+                requestAnimationFrame( this.animate )
+                this.controls.update()
+                
+                for (const obj of this.scene.children) {
+                    if ('update' in obj) obj.update()
+                }
+                this.raycasting()
+
+                this.renderer.render(this.scene, this.camera)
+
+            }, 1000 / framerate )
+            stats.end()
+
         }
 
     }
@@ -96,6 +112,7 @@ export class Canvas {
         this.scene.children = []
         if (this.axis_helper) this.scene.add(new THREE.AxesHelper());
         this.set_center_body({ mu: this.mu })
+        this.scene.add(new THREE.AmbientLight())
     }
 
     rescale() {
@@ -194,13 +211,24 @@ export class Canvas {
 
     // ------------------------ Look Good Stuff ------------------------
 
-    sphere(radius, texture_path='js/textures/earth.jpg') {
+    sphere({ radius, texture_path, resolution }) {
 
-        const geometry = new THREE.SphereGeometry(radius * this.scaling_factor, 32, 16)
+        texture_path    = texture_path || 'js/textures/earth.jpg'
+        resolution      = resolution || 32
+
+        const geometry = new THREE.SphereGeometry(radius * this.scaling_factor, resolution, resolution/2)
         // const material = new THREE.MeshBasicMaterial({ color: '#34c6eb' })
 
         const texture = new THREE.TextureLoader().load(texture_path)
-        const material = texture_path == 'js/textures/unknown.jpg'? new THREE.MeshBasicMaterial({ color: "#4e5861" }) : new THREE.MeshBasicMaterial({ map: texture })
+        const normal_map = new THREE.TextureLoader().load(texture_path.split('.')[0] + '_displacement.jpg')
+        const material = texture_path == 'js/textures/unknown.jpg'? 
+            new THREE.MeshStandardMaterial({ color: "#4e5861" }) : 
+            new THREE.MeshStandardMaterial({ 
+                map: texture, 
+                displacementMap: normal_map,
+                displacementScale: 0.27,
+                displacementBias: normal_map? 0 : 1,
+            })
         const sphere = new THREE.Mesh(geometry, material)
 
         this.scene.add(sphere)
@@ -208,7 +236,7 @@ export class Canvas {
 
     }
 
-    planet({ mu, x, y, z }) {    // Should add position to optional arguments
+    planet({ mu, x, y, z, resolution }) {    // Should add position to optional arguments
 
         mu          = mu || 3.986e14
 
@@ -223,7 +251,7 @@ export class Canvas {
         const radius = planet_data.radius || 6.371e6
         
         const texture_path = texture_folder + `/${body}.jpg` || texture_folder + `/earth.jpg`
-        const sphere = this.sphere(radius, texture_path)
+        const sphere = this.sphere({ radius, texture_path, resolution })
 
         const quaternion = new THREE.Quaternion()
         quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, 1), axis_tilt * Math.PI/180);
@@ -241,7 +269,7 @@ export class Canvas {
     set_center_body({ mu }) {
         if (this.body) this.body.removeFromParent()
         mu          = mu || this.mu
-        this.body = this.planet({ mu: mu })
+        this.body = this.planet({ mu: mu, resolution: 1024 })
     }
 
     body_from_mu(mu) {
@@ -268,6 +296,7 @@ export class Canvas {
         
     }
 
+    // ------------------------- Shaders -------------------------
 
 
 }

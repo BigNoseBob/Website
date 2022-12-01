@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<header>
+    <meta charset="UTF-8">
+    <title>Oliver Rayner</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</header>
+
+<body style="height: 100vh; width: 100vw;">
+
+    <div style="width: 80vw; margin: auto;"><canvas id="chart"></canvas></div>
+    
+</body>
+
+<script type="module">
+
+    import { Chart } from './node_modules/chart.js/auto/auto.js'
+    
+    const data = {
+        labels: [
+            'Eating',
+            'Drinking',
+            'Sleeping',
+            'Designing',
+            'Coding',
+            'Cycling',
+            'Running'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgb(255, 99, 132)',
+            pointBackgroundColor: 'rgb(255, 99, 132)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(255, 99, 132)'
+        }, {
+            label: 'My Second Dataset',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgb(54, 162, 235)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }]
+    }
+
+    new Chart(
+        document.getElementById('chart'),
+        {
+            type: 'radar',
+            data: data,
+            options: {
+                element: {
+                    line: {
+                        borderWidth: 3
+                    }
+                },
+                scales: {
+                    r: {
+                        display: true,
+                        backgroundColor: '#181817',
+                        ticks: {
+                            backdropColor: '#181817',
+                            display: false,
+                        }
+                    }
+                }
+            }
+        }
+    )
+
+</script>
+<!-- <script src='https://cdnjs.com/libraries/mathjs'></script> -->
