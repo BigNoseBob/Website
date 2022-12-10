@@ -16,11 +16,16 @@
 
 <script type="module">
 
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    })
+    const brother = params.brother
+
     import { Chart } from './node_modules/chart.js/auto/auto.js'
     
     const data = {
         labels: [
-            'Eating',
+            'Fighting',
             'Drinking',
             'Sleeping',
             'Designing',
@@ -77,4 +82,3 @@
     )
 
 </script>
-<!-- <script src='https://cdnjs.com/libraries/mathjs'></script> -->

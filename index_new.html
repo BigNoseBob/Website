@@ -11,7 +11,7 @@
 
 	<body>
         <div style="position: fixed; height: 100vh; width: 100vw;">
-            <div id="canvas" style="width: 200vw; height: 200vh; position: absolute; left: 0%; top: 0%; transform: translateX(-50%) translateY(-25%);"></div>
+            <div id="canvas" style="width: 200vw; height: 200vh; position: absolute; left: 0%; top: 0%;"></div>
             <div style="position: absolute; font-family: 'space-mono'; color: white; bottom: 0; right: 0; padding: min(2vh, 2vw); text-align: right;">
                 Oliver Rayner
             </div>
@@ -28,15 +28,13 @@
         window, 
         container, 
         fov: 50,
-        container_offsetX: window.innerWidth * 0.50 * 2,
-        container_offsetY: window.innerHeight * 0.50 * 2,
     })
 
     canvas.controls.autoRotate = true
     canvas.controls.autoRotateSpeed = 0.1
     canvas.controls.enableZoom = false
-    console.log(window.innerHeight / 0.1, window.innerWidth / 0.1)
-    canvas.resize_factor = Math.min(window.innerHeight, window.innerWidth) / 12780;
+    canvas.controls.enableRotate = false
+    canvas.resize_factor = 0.0003 * window.innerHeight;
     canvas.animate()
 
     canvas.ellipse({ a: 4.5e6, theta: 90, phi: 90-25.9 })
@@ -45,5 +43,8 @@
     canvas.ellipse({ a: 9.375e6, e: 0.015, theta: 90, phi: 90-1.1 })
     const moon = canvas.planet({ mu: 7.0748e5 })
     moon.translateZ((9.375e6 - 112670) * canvas.scaling_factor)
+
+    canvas.controls.target.set(0, 0, 0)
+
 
 </script>
