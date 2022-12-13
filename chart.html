@@ -14,6 +14,7 @@
         <div style="width: 50vw; margin: auto; float: left;"><canvas id="chart"></canvas></div>
         <div style="width: 50vw; height: 60vh; margin: auto; float: right; padding: min(2vh, 2vw);">
             <div id="title" style="text-align: center; margin: auto; font-family: 'space-mono';">Placeholder Title</div>
+            <div id="canvas" style="height:50vh; width:50vw;"></div>
         </div>
     </div>
     
@@ -29,6 +30,10 @@
 
     import { Chart } from './node_modules/chart.js/auto/auto.js'
     import { PTGChart } from './js/PTG.js'
+    import * as THREE from "../node_modules/three/build/three.module.js"
+    import { OrbitControls } from "../node_modules/three/examples/jsm/controls/OrbitControls.js"
+    import { OBJLoader } from "../node_modules/three/examples/jsm/loaders/OBJLoader.js"
+    import { MTLLoader } from "../node_modules/three/examples/jsm/loaders/MTLLoader.js"
 
     console.log('Modules loaded...')
 
@@ -44,5 +49,89 @@
     const title = document.getElementById('title')
     title.innerText = brother_name
 
+
+    // Initalise Three.JS renderer
+    const container = document.getElementById("canvas")
+    const width     = container.offsetWidth
+    const height    = container.offsetHeight
+
+    const renderer = new THREE.WebGLRenderer()
+    renderer.setClearColor(new THREE.Color("#171515"), 0)
+    renderer.setSize(width, height)
+    container.appendChild(renderer.domElement)
+
+    // Orbit Controls
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.01, 10e6)
+    const controls = new OrbitControls(camera, renderer.domElement)
+
+    controls.autoRotate = true
+    controls.autoRotateSpeed = 1
+
+    camera.position.set(7, 2.5, 7)
+    camera.lookAt(0, 0, 0)
+    controls.update()
+
+    const scene = new THREE.Scene()
+    scene.add(new THREE.AxesHelper())
+
+    // const light = new THREE.AmbientLight()
+    const light1 = new THREE.PointLight()
+    light1.position.set(-2, 5, -2)
+    light1.intensity = 10.0
+
+    const light2 = new THREE.PointLight()
+    light2.position.set(2, 5, 2)
+    light2.intensity = 10.0
+
+    const light3 = new THREE.PointLight()
+    light3.position.set(2, 5, -2)
+    light3.intensity = 10.0
+
+    const light4 = new THREE.PointLight()
+    light4.position.set(-2, 5, 2)
+    light4.intensity = 10.0
+
+    scene.add(light1)
+    scene.add(light2)
+    scene.add(light3)
+    scene.add(light4)
+
+    const animate = () => {
+
+        requestAnimationFrame( animate )
+        controls.update()
+        renderer.render(scene, camera)
+
+    }
+    animate()
+
+    const obj_name = 'food/Bread'
+
+    const mtlLoader = new MTLLoader()
+    mtlLoader.setMaterialOptions({ normalizeRGB: false })
+    mtlLoader.load(`./models/${obj_name}.mtl`, function (mats) {
+        mats.preload()
+
+        for (let mat of Object.values(mats.materials)) {
+            // mat.color.r *= 255
+            // mat.color.g *= 255
+            // mat.color.b *= 255
+        }
+
+        const loader = new OBJLoader()
+        loader.setMaterials(mats)
+        loader.load(`./models/${obj_name}.obj`, function (obj) {
+            scene.add(obj)
+            console.log('loaded')
+            console.log(scene)
+
+        }, function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded')
+        }, function (err) {
+            console.log('An error happened')
+        })
+    })
+
+    
 
 </script>
