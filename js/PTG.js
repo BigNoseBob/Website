@@ -17,7 +17,7 @@ export class PTGChart {
         
     }
 
-    add_dataset(name) {
+    add_dataset(name, color="#f5f3f2") {
 
         this.data.datasets.push({
             
@@ -25,12 +25,12 @@ export class PTGChart {
             data: this.brothers[name],
 
             fill: true,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            pointBackgroundColor: 'rgb(255, 99, 132)',
+            backgroundColor: color + '80',
+            borderColor: color,
+            pointBackgroundColor: color,
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(255, 99, 132)'
+            pointHoverBorderColor: color
 
         })
 
@@ -62,7 +62,13 @@ export class PTGChart {
                         }
                     },
                     responsive: true,
-                    // maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                        }
+                    },
+                    maintainAspectRatio: true,
                 }
             }
         )
