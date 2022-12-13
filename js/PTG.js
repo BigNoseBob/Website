@@ -52,7 +52,7 @@ export class PTGChart {
                     scales: {
                         r: {
                             display: true,
-                            backgroundColor: '#181817',
+                            backgroundColor: '#18181700',
                             ticks: {
                                 backdropColor: '#181817',
                                 display: false,
