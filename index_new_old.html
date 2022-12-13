@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<header>
+    <meta charset="UTF-8">
+    <title>Oliver Rayner</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</header>
+
+	<body>
+        <div style="position: fixed; height: 100vh; width: 100vw;">
+            <!-- <div style="height:100vh; width:100vw;">
+                Hello there
+            </div> -->
+
+            <div id="canvas" style="width: 100vw; height: 100vh;"></div>
+            <div style="position: absolute; right: 0; padding: min(4vw, 4vh); top:35%; width: 33vw; font-family: 'space-mono'; display: flex; flex-direction: column;">
+                There they go, off to Mars, just for the ride, thinking that they will find a planet like a seer's crystal,
+                in which to read a miraculous future. What they'll find, instead, is the somewhat shopworn image of themselves. 
+                Mars is a mirror, not a crystal.
+                <br><br>
+                <span style="text-align:right;">- Ray Bradbury</span>
+            </div>
+            <div style="position: absolute; font-family: 'space-mono'; color: white; bottom: 0; right: 0; padding: min(2vh, 2vw); text-align: right;">
+                Oliver Rayner
+            </div>
+        </div>
+	</body>
+    
+</html>
+<script type="module">
+
+    import { Canvas } from "./js/Canvas.js"
+
+    const container = document.getElementById('canvas')
+    const canvas = new Canvas({
+        window, 
+        container, 
+        fov: 50,
+    })
+
+    canvas.controls.autoRotate = true
+    canvas.controls.autoRotateSpeed = 0.1
+    canvas.controls.enableZoom = false
+    canvas.resize_factor = 0.8;
+    canvas.camera.translateX(0.5 * canvas.width * canvas.scaling_factor)
+    canvas.animate()
+
+    canvas.ellipse({ a: 4.5e6, theta: 90, phi: 90-25.9 })
+    canvas.auto_resize = false
+    
+    canvas.ellipse({ a: 9.375e6, e: 0.015, theta: 90, phi: 90-1.1 })
+    const moon = canvas.planet({ mu: 7.0748e5 })
+    moon.translateZ((9.375e6 - 112670) * canvas.scaling_factor)
+
+</script>

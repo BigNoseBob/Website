@@ -2,9 +2,13 @@
     "labels": [
         "Fighting",
         "Cheese",
-        "Easter Island"
+        "Easter Island",
+        "Hitmnan in Paris",
+        "Mystery Solving Ability"
+
     ],
     "brothers": {
-        "Oliver Rayner":    [ "6", "4", "6" ]
+        "oliverr":      [ "6", "4", "6", "5", "4.5" ],
+        "aaron":        [ "3", "3", "4", "1", "7" ]
     }
 }

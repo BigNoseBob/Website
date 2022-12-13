@@ -4,16 +4,16 @@
 // PTG Radar Chart
 
 import { Chart } from '../node_modules/chart.js/auto/auto.js'
-const ptg_json = await fetch('./js/PTG_data.json').json()
+const json = await fetch('./js/PTG_data.json').then( res => res.json() )
 
 export class PTGChart {
 
-    constructor() {
+    constructor(window, container) {
 
-        const json_data = JSON.parse(ptg_json)
-        const labels = json_data.labels
-        const brothers = json.brothers
-        const data = { labels: labels, datasets: [] }
+        this.element = container
+        this.labels = json.labels
+        this.brothers = json.brothers
+        this.data = { labels: this.labels, datasets: [] }
         
     }
 
@@ -33,6 +33,39 @@ export class PTGChart {
             pointHoverBorderColor: 'rgb(255, 99, 132)'
 
         })
+
+    }
+
+    create_chart() {
+
+        this.chart = new Chart(
+            document.getElementById('chart'),
+            {
+                type: 'radar',
+                data: this.data,
+                options: {
+                    element: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    },
+                    scales: {
+                        r: {
+                            display: true,
+                            backgroundColor: '#181817',
+                            ticks: {
+                                backdropColor: '#181817',
+                                display: false,
+                            },
+                            min: 0,
+                            max: 8,
+                        }
+                    },
+                    responsive: true,
+                    // maintainAspectRatio: false,
+                }
+            }
+        )
 
     }
 
