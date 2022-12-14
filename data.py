@@ -1,6 +1,6 @@
 
 
-num_sheets = 9
+num_sheets = 8
 scores = {}
 
 name_set = {'Marco Andrade', 'James', 'Jack', 'Bert', 'Xavier', 'Seb', 'Matt', 'Amogh', 'Eric', 'Juan', 'Yonas', 'Evan', 'Nick', 'Donny', 'Trace', 'Marco Arias', 'Manwaring', 'Robbie', 'LeBlanc', 'Tyler', 'Stephen', 'Finman', 'Josh', 'Hez', 'Aaron', 'Fritz', 'Gupreet', 'Sawyer', 'Jayden', 'Hungy', 'Franklin', 'Isaiah', 'Lleyton', 'Carlson', 'Justin', 'Alan', 'Miles KT', 'Mark', 'Peter', 'Wang', 'Migo', 'Ollie', 'Max', 'Milo', 'Gabo', 'Sasha', 'Xander', 'John', 'Aidan', 'Clay', 'Isaac', 'Roper', 'Spears', 'Naya', 'Tommy'}
