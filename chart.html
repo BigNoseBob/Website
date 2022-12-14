@@ -59,12 +59,14 @@
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     })
-    const brother_name = params.brother
-    console.log(brother_name)
 
     import { Chart } from './node_modules/chart.js/auto/auto.js'
     import { PTGChart } from './js/PTG.js'
     const json = await fetch('./js/PTG_data.json').then( res => res.json() )
+
+    const id = params.id
+    const brother_name = json.ids[id]
+    console.log(brother_name, id)
 
     console.log('Modules loaded...')
 
@@ -87,12 +89,12 @@
     ptg_chart.initialize_renderer(container, brother_name)
     console.log('done.')
 
-    const selector = document.getElementById('tick')
+    // const selector = document.getElementById('tick')
 
-    const id = 'oliverr'
-    const checkbox = `<input type="checkbox" id="${id}" name="${id}"><label for="${id}">${id}</label>`
+    // const id = 'oliverr'
+    // const checkbox = `<input type="checkbox" id="${id}" name="${id}"><label for="${id}">${id}</label>`
 
-    selector.innerHTML = checkbox
+    // selector.innerHTML = checkbox
     
 
 </script>
