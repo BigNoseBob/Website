@@ -8,20 +8,51 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </header>
 
-<body style="height: 98vh; width: 98vw; padding: min(2vh, 2vw); position: fixed;">
+<body>
 
-    <!-- <div style="display: flex; height: 100%; width:100%">
-        <div style="width: 50%; margin: auto; float: left;"><canvas id="chart"></canvas></div>
-        <div style="width: 50%; height: 100%; margin: auto; float: right;">
-            <div id="title" style="text-align: center; margin: auto; font-family: 'space-mono';">Placeholder Title</div>
-            <div id="canvas" style="height:100%; width:100%;"></div>
+    <div style="display:flex; flex-direction: column;">
+        <div id="page" style="display: flex; height: 100vh; width:100vw">
+            <div id="canvas_container" style="height: 100vh; margin: auto; margin-top: 0; float: right;">
+                <!-- <div id="title" style="text-align: center; margin: auto; font-family: 'space-mono';">Placeholder Title</div> -->
+                <div id="canvas" style="height:100%; width:100%;"></div>
+            </div>
+            <div id="chart_container" style="margin: auto; float: left;"><canvas id="chart" style="margin: auto; padding:5%; width: 95%; height: 100vh;"></canvas></div>
         </div>
-    </div> -->
+        <!-- <div id="tick" style="width: 100vw; height: 20vh; padding: 2%;">
+        </div> -->
+    </div>
 
-    <div id="canvas" style="height:100vh; width:106vw; position: absolute; left: 3vw;"></div>
-    <div style="width: 50%; margin: auto; position: absolute; left: min(5vw, 5vh); bottom: min(5vw, 5vh);"><canvas id="chart"></canvas></div>
+    <!-- <div id="canvas" style="height:100vh; width:106vw; position: absolute; left: 3vw;"></div>
+    <div id="chart_container" style="width: 50%; margin: auto; position: absolute; left: min(5vw, 5vh); bottom: min(5vw, 5vh);"><canvas id="chart"></canvas></div> -->
     
 </body>
+
+<style>
+
+@media screen and (max-width: 845px) {
+
+    #page {
+        flex-direction: column;
+    }
+    #canvas_container {
+        width: 100vw;
+    }
+    #chart_container {
+        width: 100vw
+    }
+
+}
+
+@media screen and (min-width: 846px) {
+    #canvas_container {
+        width: 50vw;
+    }
+    #chart_container {
+        width: 50vw;
+    }
+}
+
+</style>
 
 <script type="module">
 
@@ -33,144 +64,35 @@
 
     import { Chart } from './node_modules/chart.js/auto/auto.js'
     import { PTGChart } from './js/PTG.js'
-    import * as THREE from "../node_modules/three/build/three.module.js"
-    import { OrbitControls } from "../node_modules/three/examples/jsm/controls/OrbitControls.js"
-    import { OBJLoader } from "../node_modules/three/examples/jsm/loaders/OBJLoader.js"
-    import { MTLLoader } from "../node_modules/three/examples/jsm/loaders/MTLLoader.js"
+    const json = await fetch('./js/PTG_data.json').then( res => res.json() )
 
     console.log('Modules loaded...')
 
-    const element = document.getElementById('chart')
+    const chart_container = document.getElementById('chart')
+    const ptg_chart = new PTGChart(window, chart_container)
 
-    const ptg_chart = new PTGChart(window, element)
-
-    ptg_chart.add_dataset("oliverr")
-    ptg_chart.add_dataset("aaron")
     ptg_chart.create_chart()
 
+    // #f5f3f2
 
-    // const title = document.getElementById('title')
-    // title.innerText = brother_name
-
-
-    // Initalise Three.JS renderer
-    const container = document.getElementById("canvas")
-    let width     = container.offsetWidth
-    let height    = container.offsetHeight
-
-    const renderer = new THREE.WebGLRenderer()
-    renderer.setClearColor(new THREE.Color("#171515"), 0)
-    renderer.setSize(width, height)
-    container.appendChild(renderer.domElement)
-
-    // Orbit Controls
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.01, 10e6)
-    const controls = new OrbitControls(camera, renderer.domElement)
-
-    controls.autoRotate = true
-    controls.autoRotateSpeed = 1
-    controls.enablePan = false
-
-    camera.position.set(7, 2.5, 7)
-    camera.lookAt(0, 0, 0)
-    controls.update()
-
-    const scene = new THREE.Scene()
-    // scene.add(new THREE.AxesHelper())
-
-    // const light1 = new THREE.PointLight()
-    // light1.position.set(-2, 5, -2)
-    // light1.intensity = 10.0
-
-    // const light2 = new THREE.PointLight()
-    // light2.position.set(2, 5, 2)
-    // light2.intensity = 10.0
-
-    // const light3 = new THREE.PointLight()
-    // light3.position.set(2, 5, -2)
-    // light3.intensity = 10.0
-
-    // const light4 = new THREE.PointLight()
-    // light4.position.set(-2, 5, 2)
-    // light4.intensity = 10.0
-
-    // scene.add(light1)
-    // scene.add(light2)
-    // scene.add(light3)
-    // scene.add(light4)
-
-    const spotLight = new THREE.SpotLight()
-    spotLight.position.set(15, 15, 15)
-    spotLight.intensity = 15
-    // spotLight.castShadow = true
-
-    const light = new THREE.AmbientLight()
-    light.intensity = 5
-    scene.add(spotLight)
-
-    window.addEventListener("resize", () => {
-        width = container.offsetWidth
-        height = container.offsetHeight
-        camera.aspect = width / height
-        camera.updateProjectionMatrix()
-        renderer.setSize(width, height)
-    })
-
-    const animate = () => {
-
-        requestAnimationFrame( animate )
-        controls.update()
-
-        const camera_pos = new THREE.Vector3()
-        camera.getWorldPosition(camera_pos)
-        spotLight.position.copy(camera_pos)
-
-        renderer.render(scene, camera)
-
+    ptg_chart.add_dataset(brother_name)
+    for (let brother of Object.keys(json.brothers)) {
+        ptg_chart.add_dataset(brother, true)
     }
-    animate()
+    console.log('hello2')
+    ptg_chart.update()
 
-    const json = await fetch('./js/PTG_data.json').then( res => res.json() )
-    const obj_name = json.models[brother_name]
+    console.log('Initializing renderer')
+    const container = document.getElementById("canvas")
+    ptg_chart.initialize_renderer(container, brother_name)
+    console.log('done.')
 
-    const mtlLoader = new MTLLoader()
-    mtlLoader.setMaterialOptions({ normalizeRGB: false })
-    mtlLoader.load(`./models/${obj_name}.mtl`, function (mats) {
-        mats.preload()
+    const selector = document.getElementById('tick')
 
-        for (let mat of Object.values(mats.materials)) {
-            // mat.color.r *= 255
-            // mat.color.g *= 255
-            // mat.color.b *= 255
-            mat.shininess = 20
-            mat.reflectivity = 0.2
-            mat.specular = new THREE.Color("#010101")
-            // mat.emissive = new THREE.Color("#2e2929")
-        }
+    const id = 'oliverr'
+    const checkbox = `<input type="checkbox" id="${id}" name="${id}"><label for="${id}">${id}</label>`
 
-        const loader = new OBJLoader()
-        loader.setMaterials(mats)
-        loader.load(`./models/${obj_name}.obj`, function (obj) {
-
-            const box = new THREE.Box3().setFromObject(obj)
-            const measure = new THREE.Vector3()
-            box.getSize(measure)
-
-            console.log(measure)
-            obj.position.set(0, -measure.y/2, 0)
-            const max_dim = Math.max(measure.x, measure.y, measure.z)
-            camera.position.set(1.2*max_dim, measure.y/4, 1.2*max_dim )
-
-            scene.add(obj)
-            console.log('loaded')
-
-        }, function (xhr) {
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded')
-        }, function (err) {
-            console.log(err)
-        })
-    })
-
+    selector.innerHTML = checkbox
     
 
 </script>
