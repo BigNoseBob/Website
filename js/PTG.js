@@ -114,6 +114,7 @@ export class PTGChart {
         controls.autoRotateSpeed = 1
         controls.enablePan = false
         controls.enableZoom = false
+        controls.enableRotate =
 
         camera.position.set(7, 2.5, 7)
         camera.lookAt(0, 0, 0)

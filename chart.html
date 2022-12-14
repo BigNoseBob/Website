@@ -12,7 +12,7 @@
 
     <div style="display:flex; flex-direction: column;">
         <div id="page" style="display: flex; height: 200vh; width:100vw">
-            <div id="canvas_container" style="height: 100vh; margin: auto; margin-top: 0; float: right;">
+            <div id="canvas_container" style="height: 80vh; margin: auto; margin-top: 0; float: right;">
                 <div id="canvas" style="height:100%; width:100%;"></div>
             </div>
             <div id="chart_container" style="margin: auto; float: left;"><canvas id="chart" style="margin: auto; padding:5%; width: 95%; height: 100vh;"></canvas></div>
@@ -84,13 +84,5 @@
     const container = document.getElementById("canvas")
     ptg_chart.initialize_renderer(container, brother_name)
     console.log('done.')
-
-    // const selector = document.getElementById('tick')
-
-    // const id = 'oliverr'
-    // const checkbox = `<input type="checkbox" id="${id}" name="${id}"><label for="${id}">${id}</label>`
-
-    // selector.innerHTML = checkbox
-    
 
 </script>
