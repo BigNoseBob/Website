@@ -80,7 +80,7 @@ export class Canvas {
         window.addEventListener("pointermove", on_pointer_move)
 
         const stats = new Stats()
-        document.body.appendChild(stats.dom)
+        // document.body.appendChild(stats.dom)
 
         // Start rendering
         this.animate = () => {
