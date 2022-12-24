@@ -6,7 +6,7 @@
 import * as THREE from "../node_modules/three/build/three.module.js"
 import { OrbitControls } from "../node_modules/three/examples/jsm/controls/OrbitControls.js"
 import { rotate_points } from "./rotation_matricies.js"
-import Stats from '../node_modules/stats.js/src/Stats.js'
+import Stats from "../node_modules/stats.js/src/Stats.js"
 
 const planet_json = await fetch('./js/planet_data.json')
 const PLANET_DATA = await planet_json.json()
