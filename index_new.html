@@ -10,15 +10,71 @@
 </header>
 
 	<body>
-        <div style="position: fixed; height: 100vh; width: 100vw;">
-            <div id="canvas" style="width: 200vw; height: 200vh; position: absolute; left: 0%; top: 0%;"></div>
-            <div style="position: absolute; font-family: 'space-mono'; color: white; bottom: 0; right: 0; padding: min(2vh, 2vw); text-align: right;">
-                Oliver Rayner
+        <div id="top_page">
+            <div id="me">
+                
             </div>
         </div>
+        <div style="position: relative; height: 100vh; width: 100vw;">
+            <div id="canvas"></div>
+            <div id="hohmann">
+                Placeholder Text
+            </div>
+        </div>
+        <div id="bottom_page"></div>
+        <div id="floater">Oliver Rayner</div>
 	</body>
     
 </html>
+
+<style>
+
+    #me {
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background: url('/images/image0.JPG') no-repeat center;
+        filter: blur(2px);
+    }
+    #hohmann {
+        font-family: 'space-mono';
+        position: absolute; 
+        width: 40%; 
+        height: 60%; 
+        top: 20%; 
+        right: 5%;
+    }
+
+    #top_page {
+        width: 100vw;
+        height: 100vh;
+    }
+    #bottom_page {
+        width: 100vw;
+        height: 50vh;
+    }
+
+    #canvas {
+        width: 200vw;
+        height: 200vh;
+        position: absolute;
+        left: -100%;
+        top: -50%;
+    }
+
+    #floater {
+        position: fixed;
+        font-family: 'space-mono';
+        color: white;
+        bottom: 0;
+        right: 0;
+        padding: min(2vh, 2vw);
+        text-align: right;
+    }
+
+</style>
+
 <script type="module">
 
     import { Canvas } from "./js/Canvas.js"
@@ -33,9 +89,9 @@
     canvas.controls.autoRotate = true
     canvas.controls.autoRotateSpeed = 0.1
     canvas.controls.enableZoom = false
-    canvas.controls.enableRotate = false
+    canvas.controls.enableRotate = true
     canvas.controls.enablePan = false
-    canvas.resize_factor = 0.0003 * window.innerHeight;
+    canvas.resize_factor = 0.00025 * Math.min(window.innerHeight, window.innerWidth);
     canvas.animate()
 
     canvas.ellipse({ a: 4.5e6, theta: 90, phi: 90-25.9 })
