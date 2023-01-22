@@ -15,9 +15,9 @@
                 
             </div>
         </div>
-        <div style="position: relative; height: 100vh; width: 100vw;">
+        <div id="hohmann">
             <div id="canvas"></div>
-            <div id="hohmann">
+            <div id="hohmanntext">
                 Placeholder Text
             </div>
         </div>
@@ -36,8 +36,16 @@
         display: flex;
         background: url('/images/image0.JPG') no-repeat center;
         filter: blur(2px);
-    }
+    } 
     #hohmann {
+        /* border-top: 2px solid white;
+        border-bottom: 2px solid white; */
+
+        position: relative;
+        height: 60vh;
+        width: 100vw;
+    }
+    #hohmanntext {
         font-family: 'space-mono';
         position: absolute; 
         width: 40%; 
@@ -57,7 +65,7 @@
 
     #canvas {
         width: 200vw;
-        height: 200vh;
+        height: 120vh;
         position: absolute;
         left: -100%;
         top: -50%;
@@ -91,7 +99,8 @@
     canvas.controls.enableZoom = false
     canvas.controls.enableRotate = true
     canvas.controls.enablePan = false
-    canvas.resize_factor = 0.00025 * Math.min(window.innerHeight, window.innerWidth);
+    // canvas.resize_factor = 0.000025 * Math.min(window.innerHeight, window.innerWidth);
+    canvas.resize_factor = 0.12     // Adjusting defualt by 1e-1?
     canvas.animate()
 
     canvas.ellipse({ a: 4.5e6, theta: 90, phi: 90-25.9 })
