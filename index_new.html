@@ -11,9 +11,12 @@
 
 	<body>
         <div id="top_page">
-            <div id="me">
-                
+            <div id="title_topper">Hello, my name is</div> 
+            <div id="title">
+                Oliver<a style="color: #B14537">.</a>
             </div>
+            <div id="bottom_top_page"></div>
+            <div id="me"></div>
         </div>
         <div id="hohmann">
             <div id="canvas"></div>
@@ -29,19 +32,57 @@
 
 <style>
 
+    body {
+        --cream: #dfd1c9;
+        --dg1: #424549;
+        --dg2: #36393e;
+        --dg3: #282b30;
+        --dg4: #1e2124;
+        --space-gray: #181817;
+
+        /* Tan, Pink Red */
+        --ragin-beige: #fff5d7;
+        --coral-pink: #ff5e6c;
+        --sleuthe-yellow: #feb300;
+        --pink-leaf: #ffaaab;
+    }
+
+    #title {
+        position: absolute;
+        top: 35%;
+        left: 30%;
+        font-family: 'Piazzolla';
+        font-weight: 700;
+        font-size: min(7vw, 7vh);
+    }
+    #title_topper {
+        position: absolute;
+        top: 32.5%;
+        left: 30%;
+        font-family: 'Rock Salt';
+        font-weight: 300;
+        font-size: min(2vw, 2vh);
+        color: gray;
+    }
+
     #me {
         margin: auto;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        background: url('/images/image0.JPG') no-repeat center;
-        filter: blur(2px);
+        width: min(15vh, 15vw);
+        height: min(15vh, 15vw);
+        position: absolute;
+        background: url('/images/squat_paintstrokes_headshot.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-radius: 50%;
+        border: 9px solid var(--space-gray);
+        right: 20.5%;
+        top: 30%;
     } 
     #hohmann {
         /* border-top: 2px solid white;
         border-bottom: 2px solid white; */
 
-        position: relative;
+        position: absolute;
         height: 60vh;
         width: 100vw;
     }
@@ -56,7 +97,24 @@
 
     #top_page {
         width: 100vw;
-        height: 100vh;
+        height: 60vh;
+        background-color: #ECDFDC;
+        /* background-image: url('/images/JoshuaTree.jpg'); */
+        background-position: center;
+        background-size: 100%;
+        position: relative;
+        z-index: -2;
+
+        color: black;
+    }
+    #bottom_top_page {
+        width: 30%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: #171515;
+        z-index: -1;
     }
     #bottom_page {
         width: 100vw;
@@ -64,10 +122,10 @@
     }
 
     #canvas {
-        width: 200vw;
+        width: 100vw;
         height: 120vh;
         position: absolute;
-        left: -100%;
+        left: -20%;
         top: -50%;
     }
 
