@@ -11,11 +11,14 @@
 
 	<body>
         <div id="top_page">
+
+            <div id="white"></div>
+            <div id="black"></div>
+
             <div id="title_topper">Hello, my name is</div> 
             <div id="title">
                 Oliver<a style="color: #B14537">.</a>
             </div>
-            <div id="bottom_top_page"></div>
             <div id="me"></div>
         </div>
         <div id="hohmann">
@@ -75,8 +78,9 @@
         background-size: 100%;
         border-radius: 50%;
         border: 9px solid var(--space-gray);
-        right: 20.5%;
+        right: 30%;
         top: 30%;
+        transform: translateX(calc(min(20vw, 20vh)/2));
     } 
     #hohmann {
         /* border-top: 2px solid white;
@@ -98,6 +102,7 @@
     #top_page {
         width: 100vw;
         height: 60vh;
+        display: flex;
         background-color: #ECDFDC;
         /* background-image: url('/images/JoshuaTree.jpg'); */
         background-position: center;
@@ -107,6 +112,22 @@
 
         color: black;
     }
+    #white {
+        width: 70%;
+        height: 100%;
+        background-color: #ECDFDC;
+        position: relative;
+        z-index: -1;
+        color: black;
+    }
+    #black {
+        width: 30%;
+        height: 100%;
+        background-color: #171515;
+        z-index: -1;
+    }
+
+
     #bottom_top_page {
         width: 30%;
         height: 100%;
